@@ -1,0 +1,15 @@
+C:\Users\User\source\repos\YogaCenter\YogaCenter.Core\bin\Debug\net6.0\YogaCenter.Core.deps.json
+C:\Users\User\source\repos\YogaCenter\YogaCenter.Core\bin\Debug\net6.0\YogaCenter.Core.dll
+C:\Users\User\source\repos\YogaCenter\YogaCenter.Core\bin\Debug\net6.0\YogaCenter.Core.pdb
+C:\Users\User\source\repos\YogaCenter\YogaCenter.Core\bin\Debug\net6.0\YogaCenter.Infrastructure.dll
+C:\Users\User\source\repos\YogaCenter\YogaCenter.Core\bin\Debug\net6.0\YogaCenter.Infrastructure.pdb
+C:\Users\User\source\repos\YogaCenter\YogaCenter.Core\obj\Debug\net6.0\YogaCenter.Core.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\YogaCenter\YogaCenter.Core\obj\Debug\net6.0\YogaCenter.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\YogaCenter\YogaCenter.Core\obj\Debug\net6.0\YogaCenter.Core.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\YogaCenter\YogaCenter.Core\obj\Debug\net6.0\YogaCenter.Core.AssemblyInfo.cs
+C:\Users\User\source\repos\YogaCenter\YogaCenter.Core\obj\Debug\net6.0\YogaCenter.Core.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\YogaCenter\YogaCenter.Core\obj\Debug\net6.0\YogaCenter.Core.csproj.CopyComplete
+C:\Users\User\source\repos\YogaCenter\YogaCenter.Core\obj\Debug\net6.0\YogaCenter.Core.dll
+C:\Users\User\source\repos\YogaCenter\YogaCenter.Core\obj\Debug\net6.0\refint\YogaCenter.Core.dll
+C:\Users\User\source\repos\YogaCenter\YogaCenter.Core\obj\Debug\net6.0\YogaCenter.Core.pdb
+C:\Users\User\source\repos\YogaCenter\YogaCenter.Core\obj\Debug\net6.0\ref\YogaCenter.Core.dll

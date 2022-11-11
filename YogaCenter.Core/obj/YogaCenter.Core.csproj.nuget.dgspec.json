@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Core\\YogaCenter.Core.csproj": {}
+    "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Core\\YogaCenter.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Core\\YogaCenter.Core.csproj": {
+    "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Core\\YogaCenter.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Core\\YogaCenter.Core.csproj",
+        "projectUniqueName": "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Core\\YogaCenter.Core.csproj",
         "projectName": "YogaCenter.Core",
-        "projectPath": "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Core\\YogaCenter.Core.csproj",
+        "projectPath": "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Core\\YogaCenter.Core.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Core\\obj\\",
+        "outputPath": "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Infrastructure\\YogaCenter.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Infrastructure\\YogaCenter.Infrastructure.csproj"
+              "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Infrastructure\\YogaCenter.Infrastructure.csproj": {
+                "projectPath": "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Infrastructure\\YogaCenter.Infrastructure.csproj"
               }
             }
           }
@@ -62,14 +62,14 @@
         }
       }
     },
-    "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Infrastructure\\YogaCenter.Infrastructure.csproj": {
+    "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Infrastructure\\YogaCenter.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Infrastructure\\YogaCenter.Infrastructure.csproj",
+        "projectUniqueName": "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Infrastructure\\YogaCenter.Infrastructure.csproj",
         "projectName": "YogaCenter.Infrastructure",
-        "projectPath": "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Infrastructure\\YogaCenter.Infrastructure.csproj",
+        "projectPath": "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Infrastructure\\YogaCenter.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Infrastructure\\obj\\",
+        "outputPath": "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

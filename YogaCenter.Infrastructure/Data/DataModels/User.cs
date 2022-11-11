@@ -9,6 +9,6 @@ namespace YogaCenter.Infrastructure.Data.DataModels
 {
     public class User : IdentityUser
     {
-
+        public List<YogaClass> YogaClasses { get; set; } = new List<YogaClass>();
     }
 }

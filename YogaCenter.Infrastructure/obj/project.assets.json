@@ -2018,11 +2018,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Infrastructure\\YogaCenter.Infrastructure.csproj",
+      "projectUniqueName": "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Infrastructure\\YogaCenter.Infrastructure.csproj",
       "projectName": "YogaCenter.Infrastructure",
-      "projectPath": "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Infrastructure\\YogaCenter.Infrastructure.csproj",
+      "projectPath": "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Infrastructure\\YogaCenter.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Infrastructure\\obj\\",
+      "outputPath": "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

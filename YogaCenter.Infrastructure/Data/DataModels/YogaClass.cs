@@ -33,6 +33,9 @@ namespace YogaCenter.Infrastructure.Data.DataModels
         public Teacher Teacher { get; set; } = null!;
 
 
+        public List<User> Users { get; set; } = new List<User>();
+
+
 
     }
 }

@@ -2308,11 +2308,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter\\YogaCenter.csproj",
+      "projectUniqueName": "D:\\Work\\Dev\\YogaCenter\\YogaCenter\\YogaCenter.csproj",
       "projectName": "YogaCenter",
-      "projectPath": "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter\\YogaCenter.csproj",
+      "projectPath": "D:\\Work\\Dev\\YogaCenter\\YogaCenter\\YogaCenter.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter\\obj\\",
+      "outputPath": "D:\\Work\\Dev\\YogaCenter\\YogaCenter\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2329,8 +2329,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Core\\YogaCenter.Core.csproj": {
-              "projectPath": "C:\\Users\\User\\source\\repos\\YogaCenter\\YogaCenter.Core\\YogaCenter.Core.csproj"
+            "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Core\\YogaCenter.Core.csproj": {
+              "projectPath": "D:\\Work\\Dev\\YogaCenter\\YogaCenter.Core\\YogaCenter.Core.csproj"
             }
           }
         }

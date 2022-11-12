@@ -2,7 +2,7 @@
 
 namespace YogaCenter.Controllers
 {
-    public class ScheduleController : Controller
+    public class PostController : Controller
     {
         public IActionResult Index()
         {

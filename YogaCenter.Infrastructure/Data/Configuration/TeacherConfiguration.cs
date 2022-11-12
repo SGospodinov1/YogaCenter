@@ -11,8 +11,9 @@ namespace YogaCenter.Infrastructure.Data.Configuration
             builder.HasData(new Teacher()
             {
                 Id = 1,
-                Mail = "teacher@mail.com",
-                UserId = "a55ed520-f40e-4285-b089-b5ecd84961b3"
+                FirstName = "Kristiana",
+                LastName = "Bakalova",
+                Description = "I`m a yoga teacher."
             });
         }
     }

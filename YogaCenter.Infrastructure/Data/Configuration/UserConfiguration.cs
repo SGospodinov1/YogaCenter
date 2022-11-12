@@ -1,26 +1,27 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using YogaCenter.Infrastructure.Data.DataModels;
 
 namespace YogaCenter.Infrastructure.Data.Configuration
 {
-    public class UserConfiguration : IEntityTypeConfiguration<IdentityUser>
+    public class UserConfiguration : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<IdentityUser> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.HasData(CreateUsers());
         }
 
-        private List<IdentityUser> CreateUsers()
+        private List<User> CreateUsers()
         {
-            var users = new List<IdentityUser>();
-            var hasher = new PasswordHasher<IdentityUser>();
+            var users = new List<User>();
+            var hasher = new PasswordHasher<User>();
 
-            var user = new IdentityUser()
+            var user = new User()
             {
-                Id = "a55ed520-f40e-4285-b089-b5ecd84961b3",
-                UserName = "teacher@mail.com",
-                NormalizedUserName = "teacher@mail.com",
+                Id = "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2",
+                UserName = "KristianaBakalova",
+                NormalizedUserName = "KristianaBakalova",
                 Email = "teacher@mail.com",
                 NormalizedEmail = "teacher@mail.com"
             };
@@ -30,9 +31,9 @@ namespace YogaCenter.Infrastructure.Data.Configuration
 
             users.Add(user);
 
-            user = new IdentityUser()
+            user = new User()
             {
-                Id = "444abeef-59a6-4fb0-9561-4e8b865811f2",
+                Id = "8175b008 - d14c - 4214 - 9e7e - 8dc0bdfa6b0c",
                 UserName = "guest@mail.com",
                 NormalizedUserName = "guest@mail.com",
                 Email = "guest@mail.com",
@@ -44,9 +45,9 @@ namespace YogaCenter.Infrastructure.Data.Configuration
 
             users.Add(user);
 
-            user = new IdentityUser()
+            user = new User()
             {
-                Id = "aa84e819-23ba-43f6-a9ad-c6dbaee8e7a1",
+                Id = "f01035fc-9c12-4f86-a01a-5fe5ce4d5dd2",
                 UserName = "admin@mail.com",
                 NormalizedUserName = "admin@mail.com",
                 Email = "admin@mail.com",

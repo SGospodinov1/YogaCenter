@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using YogaCenter.Infrastructure.Data.Configuration;
 using YogaCenter.Infrastructure.Data.DataModels;
 
 namespace YogaCenter.Infrastructure.Data
@@ -17,10 +18,17 @@ namespace YogaCenter.Infrastructure.Data
         public DbSet<Post> Posts { get; set; }
         public DbSet<UserYogaClass> UsersYogaClasses { get; set; }
 
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<UserYogaClass>()
                 .HasKey(k => new { k.UserId, k.YogaClassId });
+
+            builder.ApplyConfiguration(new CategoryConfiguration());
+            builder.ApplyConfiguration(new TeacherConfiguration());
+            builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new YogaClassConfiguration());
+
 
             base.OnModelCreating(builder);
         }

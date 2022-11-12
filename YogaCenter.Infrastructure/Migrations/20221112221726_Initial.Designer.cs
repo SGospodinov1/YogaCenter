@@ -12,8 +12,8 @@ using YogaCenter.Infrastructure.Data;
 namespace YogaCenter.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221111230821_AddingTables")]
-    partial class AddingTables
+    [Migration("20221112221726_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -161,21 +161,6 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("UserYogaClass", b =>
-                {
-                    b.Property<string>("UsersId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("YogaClassesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("UsersId", "YogaClassesId");
-
-                    b.HasIndex("YogaClassesId");
-
-                    b.ToTable("UserYogaClass");
-                });
-
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -192,6 +177,33 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Hatha Yoga"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Ashtanga Yoga"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Iyengar Yoga"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Viniasa Yoga"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "In Yoga"
+                        });
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.Post", b =>
@@ -232,19 +244,32 @@ namespace YogaCenter.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Mail")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Teachers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "I`m a yoga teacher.",
+                            FirstName = "Kristiana",
+                            LastName = "Bakalova"
+                        });
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.User", b =>
@@ -310,6 +335,56 @@ namespace YogaCenter.Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "aa4fe5ae-4d03-4e62-9a70-05424a1ec00d",
+                            Email = "teacher@mail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "teacher@mail.com",
+                            NormalizedUserName = "KristianaBakalova",
+                            PasswordHash = "AQAAAAEAACcQAAAAEG8lNkIckX0xqydtu4XweJTUFNOtZIfSeiGjQjDN1DRRFSz8u+sxjBsLVuUBMpPsmg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "9673fbfb-0e13-4af5-9105-af3dea45ee87",
+                            TwoFactorEnabled = false,
+                            UserName = "KristianaBakalova"
+                        },
+                        new
+                        {
+                            Id = "8175b008 - d14c - 4214 - 9e7e - 8dc0bdfa6b0c",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "0483fc6c-a6b1-488b-9b2e-dc1923d49568",
+                            Email = "guest@mail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "guest@mail.com",
+                            NormalizedUserName = "guest@mail.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFCKXnhFwF8bt8Ff8q/zz8DHe/kRnPt362bH88ods7rdRApqe6ybBnhDZNL/s/Fu1g==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "17b4a4b7-8e43-4d8c-85c4-a914a4d2824c",
+                            TwoFactorEnabled = false,
+                            UserName = "guest@mail.com"
+                        },
+                        new
+                        {
+                            Id = "f01035fc-9c12-4f86-a01a-5fe5ce4d5dd2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "333458de-03da-489f-9adf-0646a299a5c2",
+                            Email = "admin@mail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "admin@mail.com",
+                            NormalizedUserName = "admin@mail.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKY0mfrmI1nIluRCS7QmL9vMbpbQ6kFH4Q/7n+ebprX8yI1eIgELC8vAU3O2bXwNZA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "d072705c-d105-450a-8684-6a5016626ab9",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@mail.com"
+                        });
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.UserYogaClass", b =>
@@ -335,12 +410,14 @@ namespace YogaCenter.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("CategoryId")
-                        .IsRequired()
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsEdited")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -348,6 +425,7 @@ namespace YogaCenter.Infrastructure.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<decimal>("Price")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("StartTime")
@@ -363,6 +441,30 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.HasIndex("TeacherId");
 
                     b.ToTable("YogaClasses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            EndTime = new DateTime(2022, 11, 11, 19, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsEdited = false,
+                            Name = "Balance and clear your mind",
+                            Price = 15m,
+                            StartTime = new DateTime(2022, 11, 11, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            TeacherId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 4,
+                            EndTime = new DateTime(2022, 11, 11, 21, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsEdited = false,
+                            Name = "Dinamic Viniasa with Krisi",
+                            Price = 20m,
+                            StartTime = new DateTime(2022, 11, 11, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            TeacherId = 1
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -416,21 +518,6 @@ namespace YogaCenter.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("UserYogaClass", b =>
-                {
-                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.User", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.YogaClass", null)
-                        .WithMany()
-                        .HasForeignKey("YogaClassesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.Post", b =>
                 {
                     b.HasOne("YogaCenter.Infrastructure.Data.DataModels.Teacher", "Teacher")
@@ -442,27 +529,16 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.Navigation("Teacher");
                 });
 
-            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.Teacher", b =>
-                {
-                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.UserYogaClass", b =>
                 {
                     b.HasOne("YogaCenter.Infrastructure.Data.DataModels.User", "User")
-                        .WithMany()
+                        .WithMany("UsersYogaClasses")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("YogaCenter.Infrastructure.Data.DataModels.YogaClass", "YogaClass")
-                        .WithMany()
+                        .WithMany("UsersYogaClasses")
                         .HasForeignKey("YogaClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -501,6 +577,16 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.Navigation("Posts");
 
                     b.Navigation("YogaClasses");
+                });
+
+            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.User", b =>
+                {
+                    b.Navigation("UsersYogaClasses");
+                });
+
+            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.YogaClass", b =>
+                {
+                    b.Navigation("UsersYogaClasses");
                 });
 #pragma warning restore 612, 618
         }

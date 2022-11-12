@@ -10,18 +10,22 @@ namespace YogaCenter.Infrastructure.Data.DataModels
         public int Id { get; set; }
 
         [Required]
-        [EmailAddress]
-        public string Mail { get; set; }
+        [StringLength(30)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(30)]
+        public string LastName { get; set; }
+
+        [Required]
+        public string Description { get; set; }
+
+
 
         public List<YogaClass> YogaClasses { get; set; } = new List<YogaClass>();
 
         public List<Post> Posts { get; set; } = new List<Post>();
 
-        [Required]
-        public string UserId { get; set; }
-
-        [ForeignKey(nameof(UserId))]
-        public User User { get; set; }
-
+       
     }
 }

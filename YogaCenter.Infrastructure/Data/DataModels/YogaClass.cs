@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace YogaCenter.Infrastructure.Data.DataModels
 {
@@ -19,9 +20,14 @@ namespace YogaCenter.Infrastructure.Data.DataModels
         public DateTime EndTime { get; set; }
 
         [Required]
+        [Precision(18,2)]
         public decimal Price { get; set; }
 
-        public int? CategoryId { get; set; }
+        
+        public bool IsEdited { get; set; } = false;
+
+        [Required]
+        public int CategoryId { get; set; }
 
         [ForeignKey(nameof(CategoryId))]
         public Category Category { get; set; } = null!;
@@ -33,7 +39,7 @@ namespace YogaCenter.Infrastructure.Data.DataModels
         public Teacher Teacher { get; set; } = null!;
 
 
-        public List<User> Users { get; set; } = new List<User>();
+        public List<UserYogaClass> UsersYogaClasses { get; set; } = new List<UserYogaClass>();
 
 
 

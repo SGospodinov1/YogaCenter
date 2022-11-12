@@ -36,12 +36,12 @@ namespace YogaCenter.Infrastructure.Data.Configuration
                 new Category()
                 {
                     Id = 4,
-                    Name = "Vinyasa Yoga"
+                    Name = "Viniasa Yoga"
                 },
 
                 new Category()
                 {
-                    Id = 4,
+                   Id = 5,
                     Name = "In Yoga"
                 }
 

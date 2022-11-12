@@ -18,7 +18,7 @@ namespace YogaCenter.Infrastructure.Data.Configuration
                 new YogaClass
                 {
                     Id = 1,
-                    Name = "Балансираща Йога",
+                    Name = "Balance and clear your mind",
                     StartTime = new DateTime(2022,11,11,18,0,0),
                     EndTime = new DateTime(2022,11,11,19,30,0),
                     Price = 15,
@@ -29,15 +29,15 @@ namespace YogaCenter.Infrastructure.Data.Configuration
 
                 new YogaClass
                 {
-                Id = 1,
-                Name = "Виняса Йога",
-                StartTime = new DateTime(2022,11,11,20,0,0),
-                EndTime = new DateTime(2022,11,11,21,30,0),
-                Price = 20,
-                CategoryId = 4,
-                TeacherId = 1,
+                    Id = 2,
+                    Name = "Dinamic Viniasa with Krisi",
+                    StartTime = new DateTime(2022,11,11,20,0,0),
+                    EndTime = new DateTime(2022,11,11,21,30,0),
+                    Price = 20,
+                    CategoryId = 4,
+                    TeacherId = 1,
 
-            }
+                }
             };
 
             return classes;

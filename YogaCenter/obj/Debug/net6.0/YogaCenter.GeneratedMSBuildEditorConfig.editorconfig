@@ -23,10 +23,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Work/Dev/YogaCenter/YogaCenter/Views/Schedule/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Work/Dev/YogaCenter/YogaCenter/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -45,6 +41,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Work/Dev/YogaCenter/YogaCenter/Views/User/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Work/Dev/YogaCenter/YogaCenter/Views/YogaClassSchedule/AllClasses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWW9nYUNsYXNzU2NoZWR1bGVcQWxsQ2xhc3Nlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Work/Dev/YogaCenter/YogaCenter/Views/_ViewImports.cshtml]

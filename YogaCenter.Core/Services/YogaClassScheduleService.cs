@@ -31,7 +31,7 @@ namespace YogaCenter.Core.Services
                     EndTime = $"{y.StartTime.Hour}:{y.StartTime.Minute}",
                     Name = y.Name,
                     Category = y.Category.Name,
-                    Teacher = $"{y.Teacher.FirstName} {y.Teacher.LastName}",
+                    Teacher = $"{y.Teacher.AppUser.FirstName} {y.Teacher.AppUser.LastName}",
                     Price = y.Price
 
                 })

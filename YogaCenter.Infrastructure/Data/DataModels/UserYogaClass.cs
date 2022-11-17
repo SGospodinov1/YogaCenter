@@ -6,16 +6,16 @@ namespace YogaCenter.Infrastructure.Data.DataModels
 {
     public  class UserYogaClass
     {
-        [Required] 
-        public string UserId { get; set; }
+        
+        public int UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
-        public User User { get; set; }
+        public User User { get; set; } = null!;
 
-        [Required]
+        
         public int YogaClassId { get; set; }
 
         [ForeignKey(nameof(YogaClassId))]
-        public YogaClass YogaClass { get; set; }
+        public YogaClass YogaClass { get; set; } = null!;
     }
 }

@@ -28,6 +28,8 @@ namespace YogaCenter.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -59,21 +61,6 @@ namespace YogaCenter.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Category", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Teachers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Teachers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -183,6 +170,45 @@ namespace YogaCenter.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Teachers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Teachers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Teachers_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Posts",
                 columns: table => new
                 {
@@ -236,23 +262,23 @@ namespace YogaCenter.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UsersYogaClasses",
+                name: "UserYogaClass",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
                     YogaClassId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UsersYogaClasses", x => new { x.UserId, x.YogaClassId });
+                    table.PrimaryKey("PK_UserYogaClass", x => new { x.UserId, x.YogaClassId });
                     table.ForeignKey(
-                        name: "FK_UsersYogaClasses_AspNetUsers_UserId",
+                        name: "FK_UserYogaClass_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_UsersYogaClasses_YogaClasses_YogaClassId",
+                        name: "FK_UserYogaClass_YogaClasses_YogaClassId",
                         column: x => x.YogaClassId,
                         principalTable: "YogaClasses",
                         principalColumn: "Id",
@@ -261,12 +287,12 @@ namespace YogaCenter.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2", 0, "aa4fe5ae-4d03-4e62-9a70-05424a1ec00d", "teacher@mail.com", false, false, null, "teacher@mail.com", "KristianaBakalova", "AQAAAAEAACcQAAAAEG8lNkIckX0xqydtu4XweJTUFNOtZIfSeiGjQjDN1DRRFSz8u+sxjBsLVuUBMpPsmg==", null, false, "9673fbfb-0e13-4af5-9105-af3dea45ee87", false, "KristianaBakalova" },
-                    { "8175b008 - d14c - 4214 - 9e7e - 8dc0bdfa6b0c", 0, "0483fc6c-a6b1-488b-9b2e-dc1923d49568", "guest@mail.com", false, false, null, "guest@mail.com", "guest@mail.com", "AQAAAAEAACcQAAAAEFCKXnhFwF8bt8Ff8q/zz8DHe/kRnPt362bH88ods7rdRApqe6ybBnhDZNL/s/Fu1g==", null, false, "17b4a4b7-8e43-4d8c-85c4-a914a4d2824c", false, "guest@mail.com" },
-                    { "f01035fc-9c12-4f86-a01a-5fe5ce4d5dd2", 0, "333458de-03da-489f-9adf-0646a299a5c2", "admin@mail.com", false, false, null, "admin@mail.com", "admin@mail.com", "AQAAAAEAACcQAAAAEKY0mfrmI1nIluRCS7QmL9vMbpbQ6kFH4Q/7n+ebprX8yI1eIgELC8vAU3O2bXwNZA==", null, false, "d072705c-d105-450a-8684-6a5016626ab9", false, "admin@mail.com" }
+                    { "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2", 0, "d22c1e10-8d90-4c5b-a5f7-e0083396e338", "teacher@mail.com", false, "Kristiana", "Bakalova", false, null, "teacher@mail.com", "teacher@mail.com", "AQAAAAEAACcQAAAAEJ4WQZerZFO56RRr2M84TOyCHxXcy3eK3IaX4egNI5jtmBCYf3LtEFY26JgwHzQkDw==", null, false, "7ebb1d4e-814e-49b3-85f6-37ab8011055f", false, "teacher@mail.com" },
+                    { "8175b008 - d14c - 4214 - 9e7e - 8dc0bdfa6b0c", 0, "991a2b8b-7002-4f5d-8fb0-5c8d4ed63f39", "user@mail.com", false, "Maria", "Petrova", false, null, "user@mail.com", "user@mail.com", "AQAAAAEAACcQAAAAEMxggTnhwTLTUWyTepRZLwEEFCRme0t+XUp9yduJztNnO4AwD0BnVHqQ0JTuqVAT0Q==", null, false, "16cfa43c-6970-49f1-a67f-a2d46ecd26e4", false, "user@mail.com" },
+                    { "f01035fc-9c12-4f86-a01a-5fe5ce4d5dd2", 0, "fdd99c55-0a2a-44f3-9dee-adb9100f06d9", "admin@mail.com", false, "Stoyan", "Gospodinov", false, null, "admin@mail.com", "admin@mail.com", "AQAAAAEAACcQAAAAED2Pp0kdMpcvZ8gJXVnwB40QZKa06jl9gyBq2/1czJqWcleKBGY/VmnoZlfd4b6QMw==", null, false, "acd4e622-6cd9-47f7-a8f9-c6571734312f", false, "admin@mail.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -283,8 +309,13 @@ namespace YogaCenter.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Teachers",
-                columns: new[] { "Id", "Description", "FirstName", "LastName" },
-                values: new object[] { 1, "I`m a yoga teacher.", "Kristiana", "Bakalova" });
+                columns: new[] { "Id", "AppUserId", "Description" },
+                values: new object[] { 1, "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2", "I`m a yoga teacher." });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "AppUserId" },
+                values: new object[] { 1, "8175b008 - d14c - 4214 - 9e7e - 8dc0bdfa6b0c" });
 
             migrationBuilder.InsertData(
                 table: "YogaClasses",
@@ -341,8 +372,18 @@ namespace YogaCenter.Infrastructure.Migrations
                 column: "TeacherId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UsersYogaClasses_YogaClassId",
-                table: "UsersYogaClasses",
+                name: "IX_Teachers_AppUserId",
+                table: "Teachers",
+                column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_AppUserId",
+                table: "Users",
+                column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserYogaClass_YogaClassId",
+                table: "UserYogaClass",
                 column: "YogaClassId");
 
             migrationBuilder.CreateIndex(
@@ -377,13 +418,13 @@ namespace YogaCenter.Infrastructure.Migrations
                 name: "Posts");
 
             migrationBuilder.DropTable(
-                name: "UsersYogaClasses");
+                name: "UserYogaClass");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "YogaClasses");
@@ -393,6 +434,9 @@ namespace YogaCenter.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Teachers");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }

@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using YogaCenter.Infrastructure.Data.Configuration;
 using YogaCenter.Infrastructure.Data.DataModels;
 
 namespace YogaCenter.Infrastructure.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<User>
+    public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -14,9 +15,10 @@ namespace YogaCenter.Infrastructure.Data
 
         public DbSet<YogaClass> YogaClasses { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<User> Users { get; set; }
         public  DbSet<Category> Category { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<UserYogaClass> UsersYogaClasses { get; set; }
+        
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -24,10 +26,27 @@ namespace YogaCenter.Infrastructure.Data
             builder.Entity<UserYogaClass>()
                 .HasKey(k => new { k.UserId, k.YogaClassId });
 
-            builder.ApplyConfiguration(new CategoryConfiguration());
-            builder.ApplyConfiguration(new TeacherConfiguration());
-            builder.ApplyConfiguration(new UserConfiguration());
-            builder.ApplyConfiguration(new YogaClassConfiguration());
+            builder.Entity<UserYogaClass>()
+                .HasOne(y => y.YogaClass)
+                .WithMany(uy => uy.UsersYogaClasses)
+                .HasForeignKey(y => y.YogaClassId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<UserYogaClass>()
+                .HasOne(u => u.User)
+                .WithMany(uy => uy.UsersYogaClasses)
+                .HasForeignKey(u => u.UserId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Admin", NormalizedName = "ADMIN"});
+
+            //builder.ApplyConfiguration(new CategoryConfiguration());
+            //builder.ApplyConfiguration(new TeacherConfiguration());
+            //builder.ApplyConfiguration(new AppUserConfiguration());
+            //builder.ApplyConfiguration(new YogaClassConfiguration());
+            //builder.ApplyConfiguration(new UserConfiguration());
 
 
             base.OnModelCreating(builder);

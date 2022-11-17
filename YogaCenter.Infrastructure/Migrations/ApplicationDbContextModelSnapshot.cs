@@ -47,6 +47,14 @@ namespace YogaCenter.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "a9102582-a6f9-4730-8dc6-59644bc1a460",
+                            ConcurrencyStamp = "9ad4d36c-baac-4973-9b82-29ed851c69bb",
+                            Name = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -159,6 +167,137 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.AppUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e6e1e8c8-e42c-4ab8-99e7-8a01a3a068fa",
+                            Email = "teacher@mail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Kristiana",
+                            LastName = "Bakalova",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "teacher@mail.com",
+                            NormalizedUserName = "teacher@mail.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAwoHIb6dlzIX+l1qTVZl+8n00k/sHfA38CAm4Jk+AScgFxIHpw6ujkv6xrfLClLiA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "120db779-db56-4c7c-8fd3-69cb38038160",
+                            TwoFactorEnabled = false,
+                            UserName = "teacher@mail.com"
+                        },
+                        new
+                        {
+                            Id = "8175b008 - d14c - 4214 - 9e7e - 8dc0bdfa6b0c",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "572a8f3a-585c-4cdf-be0d-dd32b7a581d8",
+                            Email = "user@mail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Maria",
+                            LastName = "Petrova",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "user@mail.com",
+                            NormalizedUserName = "user@mail.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAECacrwXiTs2O+b3j/yCV49MInVuhuNB08q9L7fzEtQxwfx0CAr4Bl264jPmSrJVvRA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "a896fdd9-60d2-4efe-b698-49e87043e8f5",
+                            TwoFactorEnabled = false,
+                            UserName = "user@mail.com"
+                        },
+                        new
+                        {
+                            Id = "f01035fc-9c12-4f86-a01a-5fe5ce4d5dd2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "9ba03e77-1dd7-48ff-9f3c-6e324120e300",
+                            Email = "admin@mail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Stoyan",
+                            LastName = "Gospodinov",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "admin@mail.com",
+                            NormalizedUserName = "admin@mail.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEN1DKVAdmmvgLk0b7RGdiv3tOsPjnsutwxTHTQw4S7cTMyQGHq5ei/X1SGXcU96KQA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ae7dfd4c-5b6f-47d1-91b5-6ff852e1c147",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@mail.com"
+                        });
+                });
+
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -242,21 +381,17 @@ namespace YogaCenter.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.ToTable("Teachers");
 
@@ -264,131 +399,41 @@ namespace YogaCenter.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "I`m a yoga teacher.",
-                            FirstName = "Kristiana",
-                            LastName = "Bakalova"
+                            AppUserId = "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2",
+                            Description = "I`m a yoga teacher."
                         });
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.User", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
+                    b.HasIndex("AppUserId");
 
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", (string)null);
+                    b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
-                            Id = "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "aa4fe5ae-4d03-4e62-9a70-05424a1ec00d",
-                            Email = "teacher@mail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "teacher@mail.com",
-                            NormalizedUserName = "KristianaBakalova",
-                            PasswordHash = "AQAAAAEAACcQAAAAEG8lNkIckX0xqydtu4XweJTUFNOtZIfSeiGjQjDN1DRRFSz8u+sxjBsLVuUBMpPsmg==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "9673fbfb-0e13-4af5-9105-af3dea45ee87",
-                            TwoFactorEnabled = false,
-                            UserName = "KristianaBakalova"
-                        },
-                        new
-                        {
-                            Id = "8175b008 - d14c - 4214 - 9e7e - 8dc0bdfa6b0c",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "0483fc6c-a6b1-488b-9b2e-dc1923d49568",
-                            Email = "guest@mail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "guest@mail.com",
-                            NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFCKXnhFwF8bt8Ff8q/zz8DHe/kRnPt362bH88ods7rdRApqe6ybBnhDZNL/s/Fu1g==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "17b4a4b7-8e43-4d8c-85c4-a914a4d2824c",
-                            TwoFactorEnabled = false,
-                            UserName = "guest@mail.com"
-                        },
-                        new
-                        {
-                            Id = "f01035fc-9c12-4f86-a01a-5fe5ce4d5dd2",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "333458de-03da-489f-9adf-0646a299a5c2",
-                            Email = "admin@mail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "admin@mail.com",
-                            NormalizedUserName = "admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKY0mfrmI1nIluRCS7QmL9vMbpbQ6kFH4Q/7n+ebprX8yI1eIgELC8vAU3O2bXwNZA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "d072705c-d105-450a-8684-6a5016626ab9",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@mail.com"
+                            Id = 1,
+                            AppUserId = "8175b008 - d14c - 4214 - 9e7e - 8dc0bdfa6b0c"
                         });
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.UserYogaClass", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.Property<int>("YogaClassId")
                         .HasColumnType("int");
@@ -397,7 +442,7 @@ namespace YogaCenter.Infrastructure.Migrations
 
                     b.HasIndex("YogaClassId");
 
-                    b.ToTable("UsersYogaClasses");
+                    b.ToTable("UserYogaClass");
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.YogaClass", b =>
@@ -476,7 +521,7 @@ namespace YogaCenter.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.User", null)
+                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -485,7 +530,7 @@ namespace YogaCenter.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.User", null)
+                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -500,7 +545,7 @@ namespace YogaCenter.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.User", null)
+                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -509,7 +554,7 @@ namespace YogaCenter.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.User", null)
+                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -527,12 +572,34 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.Navigation("Teacher");
                 });
 
+            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.Teacher", b =>
+                {
+                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.User", b =>
+                {
+                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.UserYogaClass", b =>
                 {
                     b.HasOne("YogaCenter.Infrastructure.Data.DataModels.User", "User")
                         .WithMany("UsersYogaClasses")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("YogaCenter.Infrastructure.Data.DataModels.YogaClass", "YogaClass")

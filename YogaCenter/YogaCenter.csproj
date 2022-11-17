@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Administraation\**" />
+    <Content Remove="Areas\Administraation\**" />
+    <EmbeddedResource Remove="Areas\Administraation\**" />
+    <None Remove="Areas\Administraation\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5" />
@@ -18,6 +25,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\YogaCenter.Core\YogaCenter.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Administration\Models\" />
   </ItemGroup>
 
 </Project>

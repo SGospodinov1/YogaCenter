@@ -9,14 +9,16 @@ namespace Library.Controllers
 {
     public class UserController : Controller
     {
-       private readonly UserManager<User> userManager;
-       private readonly SignInManager<User> signInManager;
+       private readonly UserManager<AppUser> userManager;
+       private readonly SignInManager<AppUser> signInManager;
+       
 
-       public UserController(UserManager<User> _userManager,
-           SignInManager<User> _signInManager)
+       public UserController(UserManager<AppUser> _userManager,
+           SignInManager<AppUser> _signInManager)
        {
            userManager = _userManager;
            signInManager = _signInManager;
+           
        }
 
         [HttpGet]
@@ -35,8 +37,10 @@ namespace Library.Controllers
                return View(model);
            }
 
-           var user = new User()
+           var user = new AppUser()
            {
+               FirstName = model.FirstName,
+               LastName = model.LastName,
                UserName = model.UserName,
                Email = model.Email
            };
@@ -45,7 +49,12 @@ namespace Library.Controllers
 
            if (result.Succeeded)
            {
-               return RedirectToAction("Login", "User");
+                if (user.Email == "admin@admin.com")
+                {
+                    await userManager.AddToRoleAsync(user, "Admin");
+                }
+
+                return RedirectToAction("Login", "User");
            }
 
            foreach (var item in result.Errors)
@@ -53,7 +62,7 @@ namespace Library.Controllers
                ModelState.AddModelError("", item.Description);
            }
 
-           return View(model);
+           return RedirectToAction("Login", "User");
        }
 
         [HttpGet]
@@ -96,5 +105,22 @@ namespace Library.Controllers
            return RedirectToAction("Index", "Home");
        }
 
+
+    //   public async Task<IActionResult> AddUserToRole()
+    //   {
+    //       var roleName = "Admin";
+    //       var roleExists = await roleManager.RoleExistsAsync(roleName);
+
+    //       if (roleExists)
+    //       {
+    //           var user = await userManager.GetUserAsync(User);
+    //           var result = await userManager.AddToRoleAsync(user, roleName);
+
+    //           if (result.Succeeded)
+    //           {
+    //               return RedirectToAction("AdminIndex", "AdminHome");
+    //           }
+    //       }
+    //   }
     }
 }

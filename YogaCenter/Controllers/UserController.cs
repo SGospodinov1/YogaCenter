@@ -13,11 +13,13 @@ namespace Library.Controllers
        private readonly SignInManager<AppUser> signInManager;
        
 
+
        public UserController(UserManager<AppUser> _userManager,
            SignInManager<AppUser> _signInManager)
        {
            userManager = _userManager;
            signInManager = _signInManager;
+           
            
        }
 
@@ -86,6 +88,12 @@ namespace Library.Controllers
            if (user != null)
            {
               var result = await signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
+
+              if (User.IsInRole("Admin") || User.IsInRole("Administrator"))
+              {
+                  return RedirectToAction("Index", "Home", new { area = "Administration" });
+              }
+
               return RedirectToAction("Index", "Home");
            }
 
@@ -94,7 +102,8 @@ namespace Library.Controllers
                RequestId = "Invalid User. Please try again"
            };
 
-           return View(error);
+           
+           return RedirectToAction("Error", "Home");
        }
 
         [HttpPost]

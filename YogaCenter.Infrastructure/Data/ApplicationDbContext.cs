@@ -15,7 +15,7 @@ namespace YogaCenter.Infrastructure.Data
 
         public DbSet<YogaClass> YogaClasses { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         public  DbSet<Category> Category { get; set; }
         public DbSet<Post> Posts { get; set; }
         
@@ -23,30 +23,30 @@ namespace YogaCenter.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<UserYogaClass>()
-                .HasKey(k => new { k.UserId, k.YogaClassId });
+            builder.Entity<AppUserYogaClass>()
+                .HasKey(k => new { k.AppUserId, k.YogaClassId });
 
-            builder.Entity<UserYogaClass>()
+            builder.Entity<AppUserYogaClass>()
                 .HasOne(y => y.YogaClass)
-                .WithMany(uy => uy.UsersYogaClasses)
+                .WithMany(uy => uy.AppUsersYogaClasses)
                 .HasForeignKey(y => y.YogaClassId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Entity<UserYogaClass>()
-                .HasOne(u => u.User)
-                .WithMany(uy => uy.UsersYogaClasses)
-                .HasForeignKey(u => u.UserId)
+            builder.Entity<AppUserYogaClass>()
+                .HasOne(u => u.AppUser)
+                .WithMany(uy => uy.AppUsersYogaClasses)
+                .HasForeignKey(u => u.AppUserId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
-            //builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Admin", NormalizedName = "ADMIN"});
+            //builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" });
 
             //builder.ApplyConfiguration(new CategoryConfiguration());
             //builder.ApplyConfiguration(new TeacherConfiguration());
             //builder.ApplyConfiguration(new AppUserConfiguration());
             //builder.ApplyConfiguration(new YogaClassConfiguration());
-            //builder.ApplyConfiguration(new UserConfiguration());
+            
 
 
             base.OnModelCreating(builder);

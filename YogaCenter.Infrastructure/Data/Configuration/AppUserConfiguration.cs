@@ -45,26 +45,11 @@ namespace YogaCenter.Infrastructure.Data.Configuration
             };
 
             user.PasswordHash =
-            hasher.HashPassword(user, "guest123");
+            hasher.HashPassword(user, "user123");
 
             users.Add(user);
 
-            user = new AppUser()
-            {
-                Id = "f01035fc-9c12-4f86-a01a-5fe5ce4d5dd2",
-                UserName = "admin@mail.com",
-                NormalizedUserName = "admin@mail.com",
-                Email = "admin@mail.com",
-                NormalizedEmail = "admin@mail.com",
-                FirstName = "Stoyan",
-                LastName = "Gospodinov"
-
-            };
-
-            user.PasswordHash =
-                hasher.HashPassword(user, "admin123");
-
-            users.Add(user);
+            
 
             return users;
         }

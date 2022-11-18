@@ -3,6 +3,7 @@ using YogaCenter.Core.Models.Admin;
 
 namespace YogaCenter.Areas.Administration.Controllers
 {
+    [Area("Administration")]
     public class AdminController : Controller
     {
         [HttpGet]

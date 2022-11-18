@@ -51,9 +51,10 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a9102582-a6f9-4730-8dc6-59644bc1a460",
-                            ConcurrencyStamp = "9ad4d36c-baac-4973-9b82-29ed851c69bb",
-                            Name = "Admin"
+                            Id = "2d925872-a833-4c55-93b7-e221822dde90",
+                            ConcurrencyStamp = "4f0cc8da-45c4-4da2-a4cd-7034ac6c7fc6",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
                         });
                 });
 
@@ -246,7 +247,7 @@ namespace YogaCenter.Infrastructure.Migrations
                         {
                             Id = "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e6e1e8c8-e42c-4ab8-99e7-8a01a3a068fa",
+                            ConcurrencyStamp = "f72f016d-65fd-4019-bed3-31ae026def84",
                             Email = "teacher@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Kristiana",
@@ -254,9 +255,9 @@ namespace YogaCenter.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "teacher@mail.com",
                             NormalizedUserName = "teacher@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAwoHIb6dlzIX+l1qTVZl+8n00k/sHfA38CAm4Jk+AScgFxIHpw6ujkv6xrfLClLiA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGUj1+5fG21AImscEdZKFBOsAFLMtVYb4qB/nC8eELbS6drWFOJxzo0/kPwVIUGbgw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "120db779-db56-4c7c-8fd3-69cb38038160",
+                            SecurityStamp = "503b1b70-aea8-4d6e-b7aa-e12f5aaaa4f7",
                             TwoFactorEnabled = false,
                             UserName = "teacher@mail.com"
                         },
@@ -264,7 +265,7 @@ namespace YogaCenter.Infrastructure.Migrations
                         {
                             Id = "8175b008 - d14c - 4214 - 9e7e - 8dc0bdfa6b0c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "572a8f3a-585c-4cdf-be0d-dd32b7a581d8",
+                            ConcurrencyStamp = "eeb5a76b-f4a5-4d53-bc78-685e9e6c5471",
                             Email = "user@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Maria",
@@ -272,30 +273,27 @@ namespace YogaCenter.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "user@mail.com",
                             NormalizedUserName = "user@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAECacrwXiTs2O+b3j/yCV49MInVuhuNB08q9L7fzEtQxwfx0CAr4Bl264jPmSrJVvRA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBmigr9XJwUYGBaGWWKmWcaSURROaBgrvx36BNZkpmfjHoNgY248gTxELD4KGsL2Iw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a896fdd9-60d2-4efe-b698-49e87043e8f5",
+                            SecurityStamp = "fa7a7efc-0b92-4ec5-87d8-994a24d0c3b9",
                             TwoFactorEnabled = false,
                             UserName = "user@mail.com"
-                        },
-                        new
-                        {
-                            Id = "f01035fc-9c12-4f86-a01a-5fe5ce4d5dd2",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "9ba03e77-1dd7-48ff-9f3c-6e324120e300",
-                            Email = "admin@mail.com",
-                            EmailConfirmed = false,
-                            FirstName = "Stoyan",
-                            LastName = "Gospodinov",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "admin@mail.com",
-                            NormalizedUserName = "admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEN1DKVAdmmvgLk0b7RGdiv3tOsPjnsutwxTHTQw4S7cTMyQGHq5ei/X1SGXcU96KQA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "ae7dfd4c-5b6f-47d1-91b5-6ff852e1c147",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@mail.com"
                         });
+                });
+
+            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.AppUserYogaClass", b =>
+                {
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("YogaClassId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AppUserId", "YogaClassId");
+
+                    b.HasIndex("YogaClassId");
+
+                    b.ToTable("AppUserYogaClass");
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.Category", b =>
@@ -341,6 +339,30 @@ namespace YogaCenter.Infrastructure.Migrations
                             Id = 5,
                             Name = "In Yoga"
                         });
+                });
+
+            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Descrtiption")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.Post", b =>
@@ -402,47 +424,6 @@ namespace YogaCenter.Infrastructure.Migrations
                             AppUserId = "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2",
                             Description = "I`m a yoga teacher."
                         });
-                });
-
-            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("AppUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AppUserId = "8175b008 - d14c - 4214 - 9e7e - 8dc0bdfa6b0c"
-                        });
-                });
-
-            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.UserYogaClass", b =>
-                {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("YogaClassId")
-                        .HasColumnType("int");
-
-                    b.HasKey("UserId", "YogaClassId");
-
-                    b.HasIndex("YogaClassId");
-
-                    b.ToTable("UserYogaClass");
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.YogaClass", b =>
@@ -561,6 +542,36 @@ namespace YogaCenter.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.AppUserYogaClass", b =>
+                {
+                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.AppUser", "AppUser")
+                        .WithMany("AppUsersYogaClasses")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.YogaClass", "YogaClass")
+                        .WithMany("AppUsersYogaClasses")
+                        .HasForeignKey("YogaClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("YogaClass");
+                });
+
+            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.Comment", b =>
+                {
+                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.AppUser", "AppUser")
+                        .WithMany("Comments")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.Post", b =>
                 {
                     b.HasOne("YogaCenter.Infrastructure.Data.DataModels.Teacher", "Teacher")
@@ -583,36 +594,6 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.Navigation("AppUser");
                 });
 
-            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.User", b =>
-                {
-                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.UserYogaClass", b =>
-                {
-                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.User", "User")
-                        .WithMany("UsersYogaClasses")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.YogaClass", "YogaClass")
-                        .WithMany("UsersYogaClasses")
-                        .HasForeignKey("YogaClassId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-
-                    b.Navigation("YogaClass");
-                });
-
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.YogaClass", b =>
                 {
                     b.HasOne("YogaCenter.Infrastructure.Data.DataModels.Category", "Category")
@@ -632,6 +613,13 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.Navigation("Teacher");
                 });
 
+            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.AppUser", b =>
+                {
+                    b.Navigation("AppUsersYogaClasses");
+
+                    b.Navigation("Comments");
+                });
+
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.Category", b =>
                 {
                     b.Navigation("YogaClasses");
@@ -644,14 +632,9 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.Navigation("YogaClasses");
                 });
 
-            modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.User", b =>
-                {
-                    b.Navigation("UsersYogaClasses");
-                });
-
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.YogaClass", b =>
                 {
-                    b.Navigation("UsersYogaClasses");
+                    b.Navigation("AppUsersYogaClasses");
                 });
 #pragma warning restore 612, 618
         }

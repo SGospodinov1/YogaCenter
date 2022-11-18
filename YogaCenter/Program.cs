@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using YogaCenter.Extensions;
 using YogaCenter.Infrastructure.Data;
 using YogaCenter.Infrastructure.Data.DataModels;
-using YogaCenter.Infrastructure.Migrations;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -39,7 +39,7 @@ namespace YogaCenter.Infrastructure.Data.DataModels
         public Teacher Teacher { get; set; } = null!;
 
 
-        public List<UserYogaClass> UsersYogaClasses { get; set; } = new List<UserYogaClass>();
+        public List<AppUserYogaClass> AppUsersYogaClasses { get; set; } = new List<AppUserYogaClass>();
 
 
 

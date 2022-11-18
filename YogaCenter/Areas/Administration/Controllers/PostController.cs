@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace YogaCenter.Areas.Administration.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Area("Administration")]
     public class PostController : Controller
     {
         public IActionResult Index()

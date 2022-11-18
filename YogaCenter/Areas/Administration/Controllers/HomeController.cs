@@ -5,7 +5,7 @@ using YogaCenter.Models;
 
 namespace YogaCenter.Administration.Controllers
 {
-    [Authorize (Roles = "Administrator")]
+    [Area("Administration")]
     public class HomeController : Controller
     {
         

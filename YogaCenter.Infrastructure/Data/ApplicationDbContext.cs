@@ -42,11 +42,11 @@ namespace YogaCenter.Infrastructure.Data
 
             //builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" });
 
-            //builder.ApplyConfiguration(new CategoryConfiguration());
-            //builder.ApplyConfiguration(new TeacherConfiguration());
-            //builder.ApplyConfiguration(new AppUserConfiguration());
-            //builder.ApplyConfiguration(new YogaClassConfiguration());
-            
+            builder.ApplyConfiguration(new CategoryConfiguration());
+            builder.ApplyConfiguration(new TeacherConfiguration());
+            builder.ApplyConfiguration(new AppUserConfiguration());
+            builder.ApplyConfiguration(new YogaClassConfiguration());
+
 
 
             base.OnModelCreating(builder);

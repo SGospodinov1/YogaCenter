@@ -47,15 +47,6 @@ namespace YogaCenter.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "2d925872-a833-4c55-93b7-e221822dde90",
-                            ConcurrencyStamp = "4f0cc8da-45c4-4da2-a4cd-7034ac6c7fc6",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -247,7 +238,7 @@ namespace YogaCenter.Infrastructure.Migrations
                         {
                             Id = "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f72f016d-65fd-4019-bed3-31ae026def84",
+                            ConcurrencyStamp = "8010a12b-24f8-4827-925b-1cf0f2769b74",
                             Email = "teacher@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Kristiana",
@@ -255,9 +246,9 @@ namespace YogaCenter.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "teacher@mail.com",
                             NormalizedUserName = "teacher@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGUj1+5fG21AImscEdZKFBOsAFLMtVYb4qB/nC8eELbS6drWFOJxzo0/kPwVIUGbgw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEK30x6fFJswMbI7q1UICnyiFeUARYfF2OLED+4Mr/RWTbKsn67dNYzYdE67utSWpww==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "503b1b70-aea8-4d6e-b7aa-e12f5aaaa4f7",
+                            SecurityStamp = "d1bb6e2b-ab82-4e56-ae5f-bd3dbb29609d",
                             TwoFactorEnabled = false,
                             UserName = "teacher@mail.com"
                         },
@@ -265,7 +256,7 @@ namespace YogaCenter.Infrastructure.Migrations
                         {
                             Id = "8175b008 - d14c - 4214 - 9e7e - 8dc0bdfa6b0c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "eeb5a76b-f4a5-4d53-bc78-685e9e6c5471",
+                            ConcurrencyStamp = "e5850a5e-4b06-4e7b-9d18-d4f88971036a",
                             Email = "user@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Maria",
@@ -273,9 +264,9 @@ namespace YogaCenter.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "user@mail.com",
                             NormalizedUserName = "user@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBmigr9XJwUYGBaGWWKmWcaSURROaBgrvx36BNZkpmfjHoNgY248gTxELD4KGsL2Iw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDlUkYkalQQ1TIqm3+wtZHBV4rvQes1NRR8BZPkXqtEpg5V6gGyxJgpJV8L6YZm3LQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fa7a7efc-0b92-4ec5-87d8-994a24d0c3b9",
+                            SecurityStamp = "d610d253-57ab-460d-8771-8200f43f31c3",
                             TwoFactorEnabled = false,
                             UserName = "user@mail.com"
                         });

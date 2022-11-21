@@ -11,6 +11,7 @@ namespace YogaCenter.Extensions
         {
             services.AddScoped<IRepository, Repository>();
             services.AddScoped<IYogaClassScheduleService, YogaClassScheduleService>();
+            services.AddScoped<IAdminService, AdminService>();
 
 
             return services;

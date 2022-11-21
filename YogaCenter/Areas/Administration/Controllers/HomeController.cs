@@ -1,14 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
+using YogaCenter.Core.Models;
 using YogaCenter.Models;
 
 namespace YogaCenter.Administration.Controllers
 {
     [Area("Administration")]
+    [Route("Administration/[controller]/[action]")]
     public class HomeController : Controller
     {
-        
+
+        public IActionResult Index()
+        {
+            
+            return View();
+        }
 
         public IActionResult AdminIndex()
         {

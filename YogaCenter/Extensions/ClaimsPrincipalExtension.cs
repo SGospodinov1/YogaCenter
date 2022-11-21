@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
 
 namespace YogaCenter.Extensions
 {
@@ -9,5 +10,7 @@ namespace YogaCenter.Extensions
             return user.FindFirstValue(ClaimTypes.NameIdentifier);
             
         }
+
+        
     }
 }

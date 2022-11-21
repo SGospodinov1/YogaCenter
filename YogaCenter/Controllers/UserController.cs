@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Security.Claims;
+using System.Security.Principal;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
+using YogaCenter.Core.Models;
 using YogaCenter.Infrastructure.Data.DataModels;
 using YogaCenter.Models;
 using YogaCenter.Models.Account;
@@ -11,17 +14,18 @@ namespace Library.Controllers
     {
        private readonly UserManager<AppUser> userManager;
        private readonly SignInManager<AppUser> signInManager;
-       
+       private readonly RoleManager<IdentityRole> roleManager;
+
 
 
        public UserController(UserManager<AppUser> _userManager,
-           SignInManager<AppUser> _signInManager)
-       {
-           userManager = _userManager;
-           signInManager = _signInManager;
-           
-           
-       }
+            SignInManager<AppUser> _signInManager,
+            RoleManager<IdentityRole> _roleManager)
+        {
+            userManager = _userManager;
+            signInManager = _signInManager;
+            roleManager = _roleManager;
+        }
 
         [HttpGet]
        public IActionResult Register()
@@ -53,7 +57,13 @@ namespace Library.Controllers
            {
                 if (user.Email == "admin@admin.com")
                 {
+                    if (!(await roleManager.RoleExistsAsync("Admin")))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole("Admin"));
+                    }
+
                     await userManager.AddToRoleAsync(user, "Admin");
+                    //    await userManager.AddToRoleAsync(user, "Admin");
                 }
 
                 return RedirectToAction("Login", "User");
@@ -89,10 +99,6 @@ namespace Library.Controllers
            {
               var result = await signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
 
-              if (User.IsInRole("Admin") || User.IsInRole("Administrator"))
-              {
-                  return RedirectToAction("Index", "Home", new { area = "Administration" });
-              }
 
               return RedirectToAction("Index", "Home");
            }

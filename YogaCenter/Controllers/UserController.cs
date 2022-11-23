@@ -74,7 +74,7 @@ namespace Library.Controllers
                ModelState.AddModelError("", item.Description);
            }
 
-           return RedirectToAction("Login", "User");
+           return View(model);
        }
 
         [HttpGet]
@@ -99,17 +99,14 @@ namespace Library.Controllers
            {
               var result = await signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
 
-
-              return RedirectToAction("Index", "Home");
+              if (result.Succeeded)
+              {
+                  return RedirectToAction("Index", "Home");
+              }
            }
 
-           var error = new ErrorViewModel()
-           {
-               RequestId = "Invalid User. Please try again"
-           };
-
            
-           return RedirectToAction("Error", "Home");
+           return View(model);
        }
 
         [HttpPost]
@@ -121,21 +118,6 @@ namespace Library.Controllers
        }
 
 
-    //   public async Task<IActionResult> AddUserToRole()
-    //   {
-    //       var roleName = "Admin";
-    //       var roleExists = await roleManager.RoleExistsAsync(roleName);
-
-    //       if (roleExists)
-    //       {
-    //           var user = await userManager.GetUserAsync(User);
-    //           var result = await userManager.AddToRoleAsync(user, roleName);
-
-    //           if (result.Succeeded)
-    //           {
-    //               return RedirectToAction("AdminIndex", "AdminHome");
-    //           }
-    //       }
-    //   }
+    
     }
 }

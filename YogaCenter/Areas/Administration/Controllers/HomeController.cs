@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using YogaCenter.Core.Models;
+using YogaCenter.Core.Services;
+using YogaCenter.Extensions;
 using YogaCenter.Models;
 
 namespace YogaCenter.Administration.Controllers
@@ -10,17 +12,14 @@ namespace YogaCenter.Administration.Controllers
     [Route("Administration/[controller]/[action]")]
     public class HomeController : Controller
     {
+        
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             
             return View();
         }
 
-        public IActionResult AdminIndex()
-        {
-            return View();
-        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

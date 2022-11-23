@@ -1,20 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using YogaCenter.Core.Models;
+using YogaCenter.Core.Services;
+using YogaCenter.Extensions;
 
 namespace YogaCenter.Controllers
 {
     public class HomeController : Controller
     {
-        
 
         public IActionResult Index()
         {
-            if (User.IsInRole("Admin") || User.IsInRole("Administrator"))
+
+            if (User.IsInRole("Admin"))
             {
+
                 return RedirectToAction("Index", "Home", new { area = "Administration" });
             }
 
+            if (User.IsInRole("Administrator"))
+            {
+                return RedirectToAction("IsTeacher", "Teacher", new { area = "Administration" });
+            }
+            
             return View();
         }
 

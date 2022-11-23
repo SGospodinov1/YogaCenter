@@ -1,0 +1,75 @@
+﻿@using YogaCenter.Core.Models.Administrator
+@using YogaCenter.Extensions
+@model NewTeacherViewModel
+
+
+@{
+    ViewBag.Id = User.Id();
+    ViewBag.Title = "Welcome Teacher";
+
+        Layout = "~/Views/Shared/_AdministrationLayout.cshtml";
+}
+
+
+
+
+<head>
+    <style>
+        #titleDiv {
+            position:center;
+            width:1250px;
+            padding:40px;
+            top: 200px;
+        }
+        #textDiv {
+            
+            position:center;
+            width:1230px;
+            padding:40px;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="text-center" id="titleDiv">
+    <h1 class="display-4">@ViewBag.Title</h1>
+    
+    <div class="text-center" id="textDiv">
+    
+        <h3 >Write some words for yourself</h3>
+    
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form asp-area="Administration" asp-action="NewTeacher" asp-controller="Teacher" method="post">
+            <div class="mb-3">
+                <label asp-for="@Model.Description" class="form-label">Description</label>
+                <input asp-for="@Model.Description" class="form-control" aria-required="true" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input type="hidden" asp-for="@Model.AppUserId" value="@ViewBag.Id" aria-required="true" />
+                <span asp-validation-for="AppUserId" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <input class="fs-6 btn btn-success mb-3 p-2" asp-areaclass="btn btn-primary" type="submit" value="Submit" />
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+
+
+
+

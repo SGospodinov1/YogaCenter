@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace YogaCenter.Areas.Administration.Controllers
 {
     [Area("Administration")]
+    [Route("Administration/[controller]/[action]")]
     public class PostController : Controller
     {
         public IActionResult Index()

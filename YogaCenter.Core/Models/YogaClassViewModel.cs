@@ -28,7 +28,8 @@ namespace YogaCenter.Core.Models
         
         public decimal Price { get; set; }
 
-        
+        public int TeacherId { get; set; }
+
         public string Teacher { get; set; }
 
         

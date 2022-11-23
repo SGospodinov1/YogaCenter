@@ -5,6 +5,8 @@ using YogaCenter.Core.Contracts;
 namespace YogaCenter.Areas.Administration.Controllers
 {
     [Area("Administration")]
+    [Route("Administration/[controller]/[action]")]
+    [Authorize]
     public class YogaClassScheduleController : Controller
     {
         private readonly IYogaClassScheduleService service;

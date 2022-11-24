@@ -12,17 +12,18 @@ namespace YogaCenter.Controllers
         public IActionResult Index()
         {
 
+            if (User.IsInRole("Administrator"))
+            {
+                return RedirectToAction("IsTeacher", "Teacher", new { area = "Administration" });
+            }
+
             if (User.IsInRole("Admin"))
             {
 
                 return RedirectToAction("Index", "Home", new { area = "Administration" });
             }
 
-            if (User.IsInRole("Administrator"))
-            {
-                return RedirectToAction("IsTeacher", "Teacher", new { area = "Administration" });
-            }
-            
+
             return View();
         }
 

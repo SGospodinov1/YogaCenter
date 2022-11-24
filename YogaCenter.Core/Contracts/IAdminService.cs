@@ -9,5 +9,7 @@ namespace YogaCenter.Core.Contracts
         public Task Add(string id);
 
         public Task Remove(string id);
+
+        public Task RemoveTeacher(string id);
     }
 }

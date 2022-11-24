@@ -13,5 +13,7 @@ namespace YogaCenter.Core.Contracts
 
         public Task<IEnumerable<TeacherViewModel>> GetAllTeachers();
 
+        public Task<MyInfoViewModel> MyInfo(string usrId);
+
     }
 }

@@ -84,5 +84,15 @@ namespace YogaCenter.Core.Services
                 await userManager.RemoveFromRoleAsync(user, roleName);
             }
         }
+
+        public async Task RemoveTeacher(string id)
+        {
+            var teacher = await repo.AllReadonly<Teacher>()
+                .FirstOrDefaultAsync(t => t.AppUserId == id);
+
+            repo.Delete(teacher);
+
+            await repo.SaveChangesAsync();
+        }
     }
 }

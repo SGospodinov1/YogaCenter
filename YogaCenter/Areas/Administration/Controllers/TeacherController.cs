@@ -54,5 +54,20 @@ namespace YogaCenter.Areas.Administration.Controllers
 
             return RedirectToAction("Index", "Home", new { area = "Administration" });
         }
+
+        [HttpGet]
+        public async Task<IActionResult> MyInfo()
+        {
+            string userId = User.Id();
+
+            var model = await service.MyInfo(userId);
+
+            return View(model);
+        }
+
+        public async Task<IActionResult> MyClasses()
+        {
+            return View();
+        }
     }
 }

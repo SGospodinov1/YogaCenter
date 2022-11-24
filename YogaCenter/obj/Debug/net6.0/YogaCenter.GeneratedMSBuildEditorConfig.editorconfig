@@ -23,6 +23,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5pc3RyYXRpb25cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Work/Dev/YogaCenter/YogaCenter/Areas/Administration/Views/Teacher/EditInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5pc3RyYXRpb25cVmlld3NcVGVhY2hlclxFZGl0SW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Work/Dev/YogaCenter/YogaCenter/Areas/Administration/Views/Teacher/MyInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5pc3RyYXRpb25cVmlld3NcVGVhY2hlclxNeUluZm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Work/Dev/YogaCenter/YogaCenter/Areas/Administration/Views/Teacher/NewTeacher.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5pc3RyYXRpb25cVmlld3NcVGVhY2hlclxOZXdUZWFjaGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

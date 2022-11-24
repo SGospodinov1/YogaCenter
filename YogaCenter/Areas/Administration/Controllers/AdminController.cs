@@ -38,6 +38,8 @@ namespace YogaCenter.Areas.Administration.Controllers
         {
             await service.Remove(userId);
 
+            await service.RemoveTeacher(userId);
+
             return RedirectToAction("AddUserToRole", "Admin");
         }
     }

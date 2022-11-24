@@ -61,5 +61,23 @@ namespace YogaCenter.Core.Services
 
             return teachers;
         }
+
+        public async Task<MyInfoViewModel> MyInfo(string usrId)
+        {
+            var teacher = await repo.AllReadonly<Teacher>()
+                .Include(u => u.AppUser)
+                .FirstOrDefaultAsync(t => t.AppUser.Id == usrId);
+
+            var result = new MyInfoViewModel()
+            {
+                AppUserId = teacher.AppUserId,
+                FirstName = teacher.AppUser.FirstName,
+                LastName = teacher.AppUser.LastName,
+                Email = teacher.AppUser.Email,
+                Description = teacher.Description
+            };
+
+            return result;
+        }
     }
 }

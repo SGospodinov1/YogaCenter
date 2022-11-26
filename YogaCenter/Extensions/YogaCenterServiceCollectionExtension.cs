@@ -10,7 +10,7 @@ namespace YogaCenter.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IRepository, Repository>();
-            services.AddScoped<IYogaClassScheduleService, YogaClassScheduleService>();
+            services.AddScoped<IYogaClassService, YogaClassService>();
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<ITeacherService, TeacherService>();
             

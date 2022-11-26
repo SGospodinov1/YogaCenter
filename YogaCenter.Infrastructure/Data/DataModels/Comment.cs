@@ -18,5 +18,10 @@ namespace YogaCenter.Infrastructure.Data.DataModels
         [ForeignKey(nameof(AppUserId))]
         public AppUser AppUser { get; set; }
 
+        [Required]
+        public int YogaClassId { get; set; }
+
+        [ForeignKey(nameof(YogaClassId))]
+        public YogaClass YogaClass { get; set; }
     }
 }

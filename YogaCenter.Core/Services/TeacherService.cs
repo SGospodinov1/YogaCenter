@@ -70,6 +70,7 @@ namespace YogaCenter.Core.Services
 
             var result = new MyInfoViewModel()
             {
+                Id = teacher.Id,
                 AppUserId = teacher.AppUserId,
                 FirstName = teacher.AppUser.FirstName,
                 LastName = teacher.AppUser.LastName,
@@ -79,5 +80,34 @@ namespace YogaCenter.Core.Services
 
             return result;
         }
+
+        public async Task<InfoDetailsViewModel> InfoDetailsById(int id)
+        {
+            var teacher = await repo.AllReadonly<Teacher>()
+                .Include(u => u.AppUser)
+                .FirstOrDefaultAsync(t => t.Id == id);
+
+            var result = new InfoDetailsViewModel()
+            {
+                Id = teacher.Id,
+                Description = teacher.Description
+            };
+
+            return result;
+        }
+
+        public async Task EditInfo(InfoDetailsViewModel model)
+        {
+            var teacher = await repo.GetByIdAsync<Teacher>(model.Id);
+
+            teacher.Description = model.Description;
+            
+
+            await repo.SaveChangesAsync();
+
+        }
+
+
+        
     }
 }

@@ -65,9 +65,35 @@ namespace YogaCenter.Areas.Administration.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> MyClasses()
+        [HttpGet]
+        public async Task<IActionResult> EditInfo(int id)
         {
-            return View();
+
+            string userId = User.Id();
+
+            var teacher = await service.InfoDetailsById(id);
+
+            var model = new InfoDetailsViewModel()
+            {
+                Id = teacher.Id,
+                Description = teacher.Description
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditInfo(InfoDetailsViewModel model)
+        {
+            
+            if (ModelState.IsValid == false)
+            {
+                return View(model);
+            }
+
+            await service.EditInfo(model);
+
+            return RedirectToAction("MyInfo", "Teacher");
         }
     }
 }

@@ -14,6 +14,8 @@ namespace YogaCenter.Core.Models
 
         public string Name { get; set; } = null!;
 
+        public DateTime DateTime { get; set; }
+
         public string DayOfWeek { get; set; }
 
         
@@ -35,6 +37,6 @@ namespace YogaCenter.Core.Models
         
         public string Category { get; set; }
 
-        
+        public List<string> Users { get; set; } = new List<string>();
     }
 }

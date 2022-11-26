@@ -1,0 +1,98 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using YogaCenter.Core.Models;
+@using YogaCenter.Extensions
+@model IEnumerable<YogaClassViewModel>
+
+
+@{
+    var userId = User.Id();
+    ViewBag.Title = "Schedule for Yoga Classes";
+    
+}
+
+
+<head>
+    <style>
+        #titleDiv {
+            position: center;
+            width: 1250px;
+            padding: 40px;
+            top: 200px;
+        }
+
+        #textDiv {
+            position: center;
+            width: 1230px;
+            padding: 40px;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center row" id="titleDiv">
+        <h2 class="text-center">@ViewBag.Title</h2>
+        <div class="card-header">
+        </div>
+        <div class="card-body" id="textDiv">
+
+            <table style="width: 100%" class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>Date</td>
+                        <td>Day of week</td>
+                        <td>Start</td>
+                        <td>End</td>
+                        <td>Name</td>
+                        <td>Category</td>
+                        <td>Teacher</td>
+                        <td>Price</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Date</td>
+                            <td>@item.DayOfWeek</td>
+                            <td>@item.StartTime</td>
+                            <td>@item.EndTime</td>
+                            <td>@item.Name</td>
+                            <td>@item.Category</td>
+                            <td>@item.Teacher</td>
+                            <td>@item.Price</td>
+
+                                @if (item.DateTime > DateTime.Now)
+                                {
+                                    if (!item.Users.Contains(userId))
+                                    {
+                                        <td>
+                                            <form class="input-group-sm" asp-controller="YogaClass" asp-action="Join" asp-route-userId="@item.Id">
+                                                <input type="submit" value="Join the event" class="fs-6 btn btn-success mb-3 p-2" />
+                                            </form>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <form class="input-group-sm" asp-controller="YogaClass" asp-action="Leave" asp-route-userId="@item.Id">
+                                                <input type="submit" value="Leave the event" class="fs-6 btn btn-success mb-3 p-2" />
+                                            </form>
+                                        </td>
+                                    }
+                                }
+                            
+
+                            <td>
+                                <form class="input-group-sm" asp-controller="YogaClass" asp-action="AddComment" asp-route-userId="@item.Id">
+                                    <input type="submit" value="Leave comment" class="fs-6 btn btn-danger mb-3 p-2" />
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+

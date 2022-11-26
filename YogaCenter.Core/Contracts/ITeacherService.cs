@@ -9,11 +9,17 @@ namespace YogaCenter.Core.Contracts
     {
         Task AddNewTeacher(NewTeacherViewModel model);
 
-        public Task<bool> IsTeacher(string userId);
+        Task<bool> IsTeacher(string userId);
 
-        public Task<IEnumerable<TeacherViewModel>> GetAllTeachers();
+        Task<IEnumerable<TeacherViewModel>> GetAllTeachers();
 
-        public Task<MyInfoViewModel> MyInfo(string usrId);
+        Task<MyInfoViewModel> MyInfo(string usrId);
+
+        Task<InfoDetailsViewModel> InfoDetailsById(int id);
+
+        Task EditInfo(InfoDetailsViewModel model);
+
+        
 
     }
 }

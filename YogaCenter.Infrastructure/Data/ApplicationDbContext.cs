@@ -40,6 +40,20 @@ namespace YogaCenter.Infrastructure.Data
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Entity<Comment>()
+                .HasOne(u => u.YogaClass)
+                .WithMany(c => c.Comments)
+                .HasForeignKey(u => u.YogaClassId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Comment>()
+                .HasOne(u => u.AppUser)
+                .WithMany(c => c.Comments)
+                .HasForeignKey(u => u.AppUserId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
             //builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" });
 
             //builder.ApplyConfiguration(new CategoryConfiguration());

@@ -41,7 +41,7 @@ namespace YogaCenter.Infrastructure.Data.DataModels
 
         public List<AppUserYogaClass> AppUsersYogaClasses { get; set; } = new List<AppUserYogaClass>();
 
-
+        public List<Comment> Comments { get; set; } = new List<Comment>();
 
     }
 }

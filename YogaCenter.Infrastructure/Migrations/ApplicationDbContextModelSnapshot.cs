@@ -238,7 +238,7 @@ namespace YogaCenter.Infrastructure.Migrations
                         {
                             Id = "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8010a12b-24f8-4827-925b-1cf0f2769b74",
+                            ConcurrencyStamp = "561638c2-d071-4dba-bfc5-38a1a6346f9f",
                             Email = "teacher@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Kristiana",
@@ -246,9 +246,9 @@ namespace YogaCenter.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "teacher@mail.com",
                             NormalizedUserName = "teacher@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEK30x6fFJswMbI7q1UICnyiFeUARYfF2OLED+4Mr/RWTbKsn67dNYzYdE67utSWpww==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEE1dWsidlIYcK9/GgFGmsN33hXDDEDAayWSXRR0roSO15KUiKByA2WUFuADCRVAipw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d1bb6e2b-ab82-4e56-ae5f-bd3dbb29609d",
+                            SecurityStamp = "cfcb9adc-4824-4677-a3b2-562c61c0a715",
                             TwoFactorEnabled = false,
                             UserName = "teacher@mail.com"
                         },
@@ -256,7 +256,7 @@ namespace YogaCenter.Infrastructure.Migrations
                         {
                             Id = "8175b008 - d14c - 4214 - 9e7e - 8dc0bdfa6b0c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e5850a5e-4b06-4e7b-9d18-d4f88971036a",
+                            ConcurrencyStamp = "4052e406-a3b7-4738-ac58-51356fa299b3",
                             Email = "user@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Maria",
@@ -264,9 +264,9 @@ namespace YogaCenter.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "user@mail.com",
                             NormalizedUserName = "user@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDlUkYkalQQ1TIqm3+wtZHBV4rvQes1NRR8BZPkXqtEpg5V6gGyxJgpJV8L6YZm3LQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKKwCnE4fCgoEYgcQyesrtqsSNqu2ZlvIp600hOZFAJ49L1h5xMcWAb2+WqYvFbOtQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d610d253-57ab-460d-8771-8200f43f31c3",
+                            SecurityStamp = "de7e3713-3846-4a7e-9069-9f0407855409",
                             TwoFactorEnabled = false,
                             UserName = "user@mail.com"
                         });
@@ -349,9 +349,14 @@ namespace YogaCenter.Infrastructure.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<int>("YogaClassId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
+
+                    b.HasIndex("YogaClassId");
 
                     b.ToTable("Comments");
                 });
@@ -557,10 +562,18 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.HasOne("YogaCenter.Infrastructure.Data.DataModels.AppUser", "AppUser")
                         .WithMany("Comments")
                         .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("YogaCenter.Infrastructure.Data.DataModels.YogaClass", "YogaClass")
+                        .WithMany("Comments")
+                        .HasForeignKey("YogaClassId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("AppUser");
+
+                    b.Navigation("YogaClass");
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.Post", b =>
@@ -626,6 +639,8 @@ namespace YogaCenter.Infrastructure.Migrations
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.YogaClass", b =>
                 {
                     b.Navigation("AppUsersYogaClasses");
+
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

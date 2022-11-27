@@ -26,9 +26,12 @@ namespace YogaCenter.Areas.Administration.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Join()
+        public async Task<IActionResult> MyClasses()
         {
-            return RedirectToAction("AllClasses", "YogaClass");
+            
+            return View();
         }
+
+        
     }
 }

@@ -39,6 +39,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5pc3RyYXRpb25cVmlld3NcWW9nYUNsYXNzXEFsbENsYXNzZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Work/Dev/YogaCenter/YogaCenter/Areas/Administration/Views/YogaClass/MyClasses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5pc3RyYXRpb25cVmlld3NcWW9nYUNsYXNzXE15Q2xhc3Nlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Work/Dev/YogaCenter/YogaCenter/Areas/Administration/Views/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5pc3RyYXRpb25cVmlld3NcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -49,6 +53,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Work/Dev/YogaCenter/YogaCenter/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Work/Dev/YogaCenter/YogaCenter/Views/Comment/AddComment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudFxBZGRDb21tZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Work/Dev/YogaCenter/YogaCenter/Views/Comment/AllComments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudFxBbGxDb21tZW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Work/Dev/YogaCenter/YogaCenter/Views/Home/Index.cshtml]
@@ -81,6 +93,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Work/Dev/YogaCenter/YogaCenter/Views/YogaClass/AllClasses.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWW9nYUNsYXNzXEFsbENsYXNzZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Work/Dev/YogaCenter/YogaCenter/Views/YogaClass/MyClasses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWW9nYUNsYXNzXE15Q2xhc3Nlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Work/Dev/YogaCenter/YogaCenter/Views/_ViewImports.cshtml]

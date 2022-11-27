@@ -9,7 +9,7 @@ namespace YogaCenter.Core.Models
 {
     public class YogaClassViewModel
     {
-        
+
         public int Id { get; set; }
 
         public string Name { get; set; } = null!;
@@ -38,5 +38,11 @@ namespace YogaCenter.Core.Models
         public string Category { get; set; }
 
         public List<string> Users { get; set; } = new List<string>();
+
+        public int Participants
+        {
+            get { return Users.Count; }
+        }
     }
+
 }

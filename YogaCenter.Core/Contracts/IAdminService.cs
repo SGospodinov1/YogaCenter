@@ -4,12 +4,12 @@ namespace YogaCenter.Core.Contracts
 {
     public interface IAdminService
     {
-        public Task<IEnumerable<UserViewModel>> AllUsers();
+        Task<IEnumerable<UserViewModel>> AllUsers();
 
-        public Task Add(string id);
+        Task Add(string id);
 
-        public Task Remove(string id);
+        Task Remove(string id);
 
-        public Task RemoveTeacher(string id);
+        Task RemoveTeacher(string id);
     }
 }

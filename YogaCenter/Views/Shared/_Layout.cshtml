@@ -25,6 +25,12 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="YogaClass" asp-action="AllClasses">Yoga Class Schedule</a>
                     </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="YogaClass" asp-action="MyClasses">My Classes</a>
+                        </li>
+                    }
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="AllTeachers">Our Teachers</a>
                     </li>

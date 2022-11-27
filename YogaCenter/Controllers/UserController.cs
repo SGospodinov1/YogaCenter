@@ -63,7 +63,7 @@ namespace Library.Controllers
                     }
 
                     await userManager.AddToRoleAsync(user, "Admin");
-                    //    await userManager.AddToRoleAsync(user, "Admin");
+                   
                 }
 
                 return RedirectToAction("Login", "User");

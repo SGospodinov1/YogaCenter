@@ -28,8 +28,11 @@ namespace YogaCenter.Areas.Administration.Controllers
 
         public async Task<IActionResult> MyClasses()
         {
-            
-            return View();
+
+            string userId = User.Id();
+            var model = await service.GetMyClasses(userId);
+
+            return View(model);
         }
 
         

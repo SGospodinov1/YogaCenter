@@ -1,0 +1,77 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using YogaCenter.Core.Models;
+@using YogaCenter.Extensions
+@model IEnumerable<CommentViewModel>
+
+
+@{
+
+    ViewBag.Title = $"Comments for class {ViewBag.YogaClassName}";
+    int value = Model.Count();
+    Layout = "~/Views/Shared/_AdministrationLayout.cshtml";
+}
+
+
+<head>
+    <style>
+        #titleDiv {
+            position: center;
+            width: 1250px;
+            padding: 40px;
+            top: 200px;
+        }
+
+        #textDiv {
+            position: center;
+            width: 1230px;
+            padding: 40px;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center row" id="titleDiv">
+        <h2 class="text-center">@ViewBag.Title</h2>
+        @if (value == 0)
+        {
+
+            <h4 class="text-center">There is no comments yet. </h4>
+
+
+        }
+        else
+        {
+            <div class="card-header">
+            </div>
+            <div class="card-body" id="textDiv">
+
+                <table style="width: 100%" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td>Description</td>
+                            <td>Name</td>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Description</td>
+                                <td>@item.FullName</td>
+
+                            </tr>
+
+                        }
+
+                        
+                    </tbody>
+                </table>
+            </div>
+        }
+
+    </div>
+</body>
+
+

@@ -6,6 +6,10 @@ namespace YogaCenter.Core.Contracts
     {
         Task<IEnumerable<CommentViewModel>> GetAll(int yogaClassId);
 
-        Task Add(int yogaClassId);
+        Task Add(CommentViewModel model);
+
+        Task<string> YogaClassName(int yogaClassId);
+
+        Task<string> UserFullName(string userId);
     }
 }

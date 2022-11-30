@@ -75,10 +75,20 @@
 
                             }
                             <td>
-                                <form class="input-group-sm" asp-controller="YogaClass" asp-action="AddComment" asp-route-classId="@item.Id">
-                                    <input type="submit" value="Leave comment" class="fs-6 btn btn-danger mb-3 p-2" />
+                                <form class="input-group-sm" asp-controller="Comment" asp-action="AllComments" asp-route-classId="@item.Id">
+                                    <input type="submit" value="Comments" class="fs-6 btn btn-danger mb-3 p-2" />
                                 </form>
                             </td>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <td>
+                                    <form class="input-group-sm" asp-controller="Comment" asp-action="AddComment" asp-route-classId="@item.Id">
+                                        <input type="submit" value="Leave comment" class="fs-6 btn btn-danger mb-3 p-2" />
+                                    </form>
+                                </td>
+                            }
+                            
+
                         </tr>
                     }
                 </tbody>

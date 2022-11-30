@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bm9CYMf7mD/ysda9iX15K3KUgrtn6/JExzzGncuDYh8=",
+  "Hash": "6U9wzv5J2r8k/69/f7SjL8buDtZJNFCfKqv1BTEG9Wg=",
   "Source": "YogaCenter",
   "BasePath": "_content/YogaCenter",
   "Mode": "Default",
@@ -1120,6 +1120,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Work\\Dev\\YogaCenter\\YogaCenter\\wwwroot\\js\\jquery.override-validator.js",
+      "SourceId": "YogaCenter",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Work\\Dev\\YogaCenter\\YogaCenter\\wwwroot\\",
+      "BasePath": "_content/YogaCenter",
+      "RelativePath": "js/jquery.override-validator.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\jquery.override-validator.js"
     },
     {
       "Identity": "D:\\Work\\Dev\\YogaCenter\\YogaCenter\\wwwroot\\js\\site.js",

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using YogaCenter.Extensions;
 using YogaCenter.Infrastructure.Data;
 using YogaCenter.Infrastructure.Data.DataModels;
+using YogaCenter.ModelBinders;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +17,11 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddMvcOptions(options =>
+    {
+        options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+    });
 builder.Services.AddApplicationServices();
 builder.Services.ConfigureApplicationCookie(options =>
 {

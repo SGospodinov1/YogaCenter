@@ -54,12 +54,12 @@
             </div>
             <div class="mb-3">
                 <label asp-for="@Model.StartTime" class="form-label">Start Time</label>
-                <input type="time"  asp-for="@Model.StartTime" class="form-control" aria-required="true" />
+                <input type="time"  asp-for="@Model.StartTime" class="form-control" aria-required="true" min="08:00" max="19:00"/>
                 <span asp-validation-for="StartTime" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="@Model.EndTime" class="form-label">End Time</label>
-                <input type="time" asp-for="@Model.EndTime" class="form-control" aria-required="true" />
+                <input type="time" asp-for="@Model.EndTime" class="form-control" aria-required="true" min="09:00" max="20:30"/>
                 <span asp-validation-for="EndTime" class="text-danger"></span>
             </div>
             <div class="mb-3">

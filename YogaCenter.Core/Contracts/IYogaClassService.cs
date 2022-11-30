@@ -1,4 +1,5 @@
 ﻿using YogaCenter.Core.Models;
+using YogaCenter.Core.Models.Administrator;
 using YogaCenter.Infrastructure.Data.DataModels;
 
 namespace YogaCenter.Core.Contracts
@@ -14,5 +15,13 @@ namespace YogaCenter.Core.Contracts
         Task AddToMyClasses(int classId, string userId);
 
         Task RemoveFromMyClasses(int classId, string userId);
+
+        Task<IEnumerable<YogaClassViewModel>> TeacherClasses(string userId);
+
+        Task<IEnumerable<Category>> GetAllCategoriesAsync();
+
+        Task AddYogaClass(CreateYogaClassViewModel model);
+
+        Task<int> FindTeacherId(string userId);
     }
 }

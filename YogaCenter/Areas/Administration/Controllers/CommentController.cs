@@ -16,6 +16,7 @@ namespace YogaCenter.Administration.Controllers
             service = _service;
         }
 
+        [HttpGet]
         public async Task<IActionResult> AllComments(int classId)
         {
 

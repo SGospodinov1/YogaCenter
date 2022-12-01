@@ -32,7 +32,7 @@ namespace YogaCenter.Areas.Administration.Controllers
         {
 
             string userId = User.Id();
-            ViewBag.UserId = userId;
+            TempData["userId"] = userId;
             var model = await service.TeacherClasses(userId);
 
             return View(model);
@@ -65,6 +65,35 @@ namespace YogaCenter.Areas.Administration.Controllers
             return RedirectToAction("MyClasses", "YogaClass");
         }
 
-        
+        [HttpGet]
+        public async Task<IActionResult> EditYogaClass(int classId)
+        {
+            var model = await service.GetYogaClassForEdit(classId);
+
+            model.Categories = await service.GetAllCategoriesAsync();
+
+            return View(model);
+        }
+            
+        [HttpPost]
+        public async Task<IActionResult> EditYogaClass(EditYogaClassViewModel model)
+        {
+            if (ModelState.IsValid == false)
+            {
+                return View(model);
+            }
+
+            await service.EditClass(model);
+
+            return RedirectToAction("MyClasses", "YogaClass");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteYogaClass(int classId)
+        {
+            await service.DeleteClass(classId);
+
+            return RedirectToAction("MyClasses", "YogaClass");
+        }
     }
 }

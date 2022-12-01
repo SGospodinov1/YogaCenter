@@ -67,7 +67,10 @@
         </div>
 
 
-        <a asp-controller="Teacher" asp-action="EditInfo" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+        <form asp-area="Administration" asp-controller="Teacher" asp-action="EditInfo" method="get" asp-route-id="@Model.Id">
+            <input type="hidden" value="@Model.Id" name="id" />
+            <button type="submit" class="fs-6 btn btn-success mb-3 p-2">Edit</button>
+        </form>
 
 
 

@@ -234,5 +234,59 @@ namespace YogaCenter.Core.Services
             await repo.SaveChangesAsync();
 
         }
+
+        public async Task<EditYogaClassViewModel> GetYogaClassForEdit(int classId)
+        {
+            var yogaClass = await repo.All<YogaClass>()
+                .Include(c => c.Category)
+                .FirstOrDefaultAsync(y => y.Id == classId);
+
+            var result = new EditYogaClassViewModel()
+            {
+                Id = yogaClass.Id,
+                Date = yogaClass.StartTime.Date.ToString("dd MM yyyy"),
+                StartTime = $"{yogaClass.StartTime.Hour:d2}:{yogaClass.StartTime.Minute:d2}",
+                EndTime = $"{yogaClass.EndTime.Hour:d2}:{yogaClass.EndTime.Minute:d2}",
+                Name = yogaClass.Name,
+                CategoryId = yogaClass.CategoryId,
+                Price = yogaClass.Price,
+            };
+
+            return result;
+        }
+
+        public async Task EditClass(EditYogaClassViewModel model)
+        {
+            var yogaClass = await repo.GetByIdAsync<YogaClass>(model.Id);
+
+            DateOnly date = DateOnly.Parse(model.Date);
+
+            TimeOnly start = TimeOnly.Parse(model.StartTime);
+
+            TimeOnly end = TimeOnly.Parse(model.EndTime);
+
+
+            DateTime startTime = new DateTime(date.Year, date.Month, date.Day, start.Hour, start.Minute, 0);
+            DateTime endTime = new DateTime(date.Year, date.Month, date.Day, end.Hour, end.Minute, 0);
+
+            yogaClass.Name = model.Name;
+            yogaClass.CategoryId = model.CategoryId;
+            yogaClass.StartTime = startTime;
+            yogaClass.EndTime = endTime;
+            yogaClass.Price = model.Price;
+            yogaClass.IsEdited = true;
+
+
+            await repo.SaveChangesAsync();
+        }
+
+        public async Task DeleteClass(int classId)
+        {
+
+            await repo.DeleteAsync<YogaClass>(classId);
+
+            await repo.SaveChangesAsync();
+
+        }
     }
 }

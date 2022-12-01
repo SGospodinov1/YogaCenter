@@ -10,6 +10,7 @@ namespace YogaCenter.Core.Models.Administrator
 {
     public class CreateYogaClassViewModel
     {
+        
         [Required]
         [StringLength(50, MinimumLength = 5)]
         public string Name { get; set; } = null!;

@@ -69,15 +69,7 @@ namespace YogaCenter.Areas.Administration.Controllers
         public async Task<IActionResult> EditInfo(int id)
         {
 
-            string userId = User.Id();
-
-            var teacher = await service.InfoDetailsById(id);
-
-            var model = new InfoDetailsViewModel()
-            {
-                Id = teacher.Id,
-                Description = teacher.Description
-            };
+            var model = await service.InfoDetailsById(id);
 
             return View(model);
         }

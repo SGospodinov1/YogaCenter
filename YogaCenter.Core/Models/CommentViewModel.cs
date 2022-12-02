@@ -11,6 +11,8 @@ namespace YogaCenter.Core.Models
         public string FullName { get; set; }
 
         public string AppUserId { get; set; }
+
+
         public int YogaClassId { get; set; }
 
         

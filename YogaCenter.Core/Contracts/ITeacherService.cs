@@ -19,7 +19,7 @@ namespace YogaCenter.Core.Contracts
 
         Task EditInfo(InfoDetailsViewModel model);
 
-        
+        Task<int> FindTeacherId(string userId);
 
     }
 }

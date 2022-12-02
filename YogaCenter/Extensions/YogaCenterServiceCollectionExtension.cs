@@ -14,6 +14,7 @@ namespace YogaCenter.Extensions
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<ITeacherService, TeacherService>();
             services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IPostService, PostService>();
 
 
             return services;

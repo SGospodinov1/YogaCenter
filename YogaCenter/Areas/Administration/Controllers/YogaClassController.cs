@@ -14,10 +14,12 @@ namespace YogaCenter.Areas.Administration.Controllers
     public class YogaClassController : Controller
     {
         private readonly IYogaClassService service;
+        private readonly ITeacherService teacherService;
 
-        public YogaClassController(IYogaClassService _service)
+        public YogaClassController(IYogaClassService _service, ITeacherService _teacherService)
         {
             service = _service;
+            teacherService = _teacherService;
         }
 
         [HttpGet]
@@ -43,7 +45,7 @@ namespace YogaCenter.Areas.Administration.Controllers
         {
             var model = new CreateYogaClassViewModel()
             {
-                TeacherId = await service.FindTeacherId(userId),
+                TeacherId = await teacherService.FindTeacherId(userId),
                 Categories = await service.GetAllCategoriesAsync()
             };
 
@@ -78,7 +80,7 @@ namespace YogaCenter.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> EditYogaClass(EditYogaClassViewModel model)
         {
-            if (ModelState.IsValid == false)
+            if (!ModelState.IsValid)
             {
                 return View(model);
             }

@@ -1,0 +1,54 @@
+﻿@using YogaCenter.Core.Models
+@model PostDetailsViewModel
+
+
+
+<head>
+    <style>
+        #titleDiv {
+            position:center;
+            width:1250px;
+            padding:40px;
+            top: 200px;
+        }
+        #textDiv {
+            
+            position:center;
+            width:1230px;
+            padding:40px;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="text-center" id="titleDiv">
+    <h1 class="display-4">@Model.Title</h1>
+
+
+</div>
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <input type="hidden" asp-for="@Model.Id" />
+        <div class="mb-3">
+
+            <p>@Model.Description</p>
+
+        </div>
+        <div class="mb-4">
+
+            <p>Created by: @Model.CreatedBy</p>
+
+        </div>
+        <div class="mb-5">
+
+            <p>Created on: @Model.CreatedDate</p>
+
+        </div>
+        
+
+    </div>
+</div>
+
+</body>
+

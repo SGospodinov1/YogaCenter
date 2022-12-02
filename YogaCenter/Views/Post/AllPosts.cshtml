@@ -1,0 +1,49 @@
+﻿@using YogaCenter.Core.Models
+@model IEnumerable<PostViewModel>
+
+@{
+    ViewBag.Title = "Learn new things";
+}
+
+<head>
+    <style>
+        #titleDiv {
+            position:center;
+            width:1250px;
+            padding:40px;
+            top: 200px;
+        }
+        #textDiv {
+            
+            position:center;
+            width:1230px;
+            padding:40px;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="text-center row" id="titleDiv">
+    <h2 class="text-center">@ViewBag.Title</h2>
+
+    <div class="text-center row" id="textDiv">
+        @foreach (var post in Model)
+        {
+            <div class="card col-4" style="width: 20rem;">
+                <div class="card-body">
+
+                    <h5 class="card-title mt-1">@post.Title</h5>
+                    <p class="mb-0">Summary: @post.Summary</p>
+                    <p class="mb-0">Created by: @post.CreatedBy</p>
+                </div>
+                
+                <form asp-area="" asp-controller="Post" asp-action="PostDetails" method="get" asp-route-classId="@post.Id">
+                    <input type="hidden" value="@post.Id" name="postId" />
+                    <button type="submit" class="fs-6 btn btn-success mb-3 p-2">Read more</button>
+                </form>
+            </div>
+        }
+    </div>
+
+</div>
+</body>

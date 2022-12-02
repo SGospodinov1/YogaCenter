@@ -52,7 +52,7 @@ namespace YogaCenter.Infrastructure.Data
                 .WithMany(c => c.Comments)
                 .HasForeignKey(u => u.AppUserId)
                 .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             //builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" });
 

@@ -232,44 +232,6 @@ namespace YogaCenter.Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "561638c2-d071-4dba-bfc5-38a1a6346f9f",
-                            Email = "teacher@mail.com",
-                            EmailConfirmed = false,
-                            FirstName = "Kristiana",
-                            LastName = "Bakalova",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "teacher@mail.com",
-                            NormalizedUserName = "teacher@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEE1dWsidlIYcK9/GgFGmsN33hXDDEDAayWSXRR0roSO15KUiKByA2WUFuADCRVAipw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "cfcb9adc-4824-4677-a3b2-562c61c0a715",
-                            TwoFactorEnabled = false,
-                            UserName = "teacher@mail.com"
-                        },
-                        new
-                        {
-                            Id = "8175b008 - d14c - 4214 - 9e7e - 8dc0bdfa6b0c",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "4052e406-a3b7-4738-ac58-51356fa299b3",
-                            Email = "user@mail.com",
-                            EmailConfirmed = false,
-                            FirstName = "Maria",
-                            LastName = "Petrova",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "user@mail.com",
-                            NormalizedUserName = "user@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKKwCnE4fCgoEYgcQyesrtqsSNqu2ZlvIp600hOZFAJ49L1h5xMcWAb2+WqYvFbOtQ==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "de7e3713-3846-4a7e-9069-9f0407855409",
-                            TwoFactorEnabled = false,
-                            UserName = "user@mail.com"
-                        });
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.AppUserYogaClass", b =>
@@ -303,33 +265,6 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Hatha Yoga"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Ashtanga Yoga"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Iyengar Yoga"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Viniasa Yoga"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "In Yoga"
-                        });
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.Comment", b =>
@@ -376,6 +311,11 @@ namespace YogaCenter.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Summary")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
@@ -412,14 +352,6 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.HasIndex("AppUserId");
 
                     b.ToTable("Teachers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AppUserId = "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2",
-                            Description = "I`m a yoga teacher."
-                        });
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.YogaClass", b =>
@@ -461,30 +393,6 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.HasIndex("TeacherId");
 
                     b.ToTable("YogaClasses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            EndTime = new DateTime(2022, 11, 11, 19, 30, 0, 0, DateTimeKind.Unspecified),
-                            IsEdited = false,
-                            Name = "Balance and clear your mind",
-                            Price = 15m,
-                            StartTime = new DateTime(2022, 11, 11, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            TeacherId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 4,
-                            EndTime = new DateTime(2022, 11, 11, 21, 30, 0, 0, DateTimeKind.Unspecified),
-                            IsEdited = false,
-                            Name = "Dinamic Viniasa with Krisi",
-                            Price = 20m,
-                            StartTime = new DateTime(2022, 11, 11, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            TeacherId = 1
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -543,7 +451,7 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.HasOne("YogaCenter.Infrastructure.Data.DataModels.AppUser", "AppUser")
                         .WithMany("AppUsersYogaClasses")
                         .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("YogaCenter.Infrastructure.Data.DataModels.YogaClass", "YogaClass")
@@ -562,13 +470,13 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.HasOne("YogaCenter.Infrastructure.Data.DataModels.AppUser", "AppUser")
                         .WithMany("Comments")
                         .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("YogaCenter.Infrastructure.Data.DataModels.YogaClass", "YogaClass")
                         .WithMany("Comments")
                         .HasForeignKey("YogaClassId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("AppUser");

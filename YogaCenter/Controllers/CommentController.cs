@@ -44,7 +44,7 @@ namespace YogaCenter.Controllers
         [HttpPost]
         public async Task<IActionResult> AddComment(CommentViewModel model)
         {
-            if (ModelState.IsValid == false)
+            if (!ModelState.IsValid)
             {
                 return View(model);
             }

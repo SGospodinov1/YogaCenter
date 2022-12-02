@@ -22,7 +22,6 @@ namespace YogaCenter.Core.Contracts
 
         Task AddYogaClass(CreateYogaClassViewModel model);
 
-        Task<int> FindTeacherId(string userId);
 
         Task<EditYogaClassViewModel> GetYogaClassForEdit(int classId);
 

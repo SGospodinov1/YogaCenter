@@ -14,6 +14,10 @@ namespace YogaCenter.Infrastructure.Data.DataModels
         public string Title { get; set; } = null!;
 
         [Required]
+        [StringLength(200)]
+        public string Summary { get; set; } = null!;
+
+        [Required]
         public string Description { get; set; } = null!;
 
         [Required]

@@ -200,14 +200,6 @@ namespace YogaCenter.Core.Services
         }
 
 
-        public async Task<int> FindTeacherId(string userId)
-        {
-            var teacher = await repo.All<Teacher>()
-                .FirstOrDefaultAsync(t => t.AppUserId == userId);
-
-            return teacher.Id;
-        }
-
         public async Task AddYogaClass(CreateYogaClassViewModel model)
         {
             DateOnly date = DateOnly.Parse(model.Date);

@@ -44,7 +44,7 @@
                 <td>
                     <form asp-area="" asp-controller="Comment" asp-action="AddComment" method="get" asp-route-classId="@TempData.Peek("classId")">
                         <input type="hidden" value="@TempData.Peek("classId")" name="classId" />
-                        <button type="submit" class="fs-6 btn btn-success mb-3 p-2">Add Comment</button>
+                        <button type="submit" class="btn btn-outline-success">Add Comment</button>
                     </form>
                 </td>
             }
@@ -79,7 +79,7 @@
                         <tr>
                             <form asp-area="" asp-controller="Comment" asp-action="AddComment" method="get" asp-route-classId="@TempData.Peek("classId")">
                                 <input type="hidden" value="@TempData.Peek("classId")" name="classId" />
-                                <button type="submit" class="fs-6 btn btn-success mb-3 p-2">Add Comment</button>
+                                <button type="submit" class="btn btn-outline-success">Add Comment</button>
                             </form>
                         </tr>
                     }

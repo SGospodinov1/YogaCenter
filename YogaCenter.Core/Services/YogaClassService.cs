@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using YogaCenter.Core.Contracts;
 using YogaCenter.Core.Models;
 using YogaCenter.Core.Models.Administrator;
@@ -10,10 +11,13 @@ namespace YogaCenter.Core.Services
     public class YogaClassService : IYogaClassService
     {
         private readonly IRepository repo;
+        private readonly ILogger logger;
 
-        public YogaClassService(IRepository _repo)
+        public YogaClassService(IRepository _repo,
+            ILogger<YogaClassService> _logger)
         {
             repo = _repo;
+            logger = _logger;
         }
 
 
@@ -81,6 +85,8 @@ namespace YogaCenter.Core.Services
                 .FirstOrDefaultAsync();
 
             var classes = user.AppUsersYogaClasses
+                .OrderBy(d => d.YogaClass.StartTime.Date)
+                .ThenBy(t => t.YogaClass.StartTime.Hour)
                 .Select(y => new YogaClassViewModel()
                 {
                     Id = y.YogaClass.Id,
@@ -158,6 +164,8 @@ namespace YogaCenter.Core.Services
             
             var classes = await repo.AllReadonly<YogaClass>()
                 .Where(t => t.Teacher.AppUserId == userId)
+                .OrderBy(d => d.StartTime.Date)
+                .ThenBy(t => t.StartTime.Hour)
                 .Select(y => new YogaClassViewModel()
                 {
                     Id = y.Id,
@@ -222,8 +230,70 @@ namespace YogaCenter.Core.Services
                 EndTime = endTime
             };
 
-            await repo.AddAsync(yogaClass);
-            await repo.SaveChangesAsync();
+            try
+            {
+                await repo.AddAsync(yogaClass);
+                await repo.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(nameof(AddYogaClass), ex);
+                throw new ApplicationException("Database failed to save Yoga Class", ex);
+            }
+
+        }
+
+        public bool IsDateAndTimeAreValid(CreateYogaClassViewModel model)
+        {
+            bool result = true;
+
+            DateOnly date = DateOnly.Parse(model.Date);
+
+            TimeOnly start = TimeOnly.Parse(model.StartTime);
+
+            TimeOnly end = TimeOnly.Parse(model.EndTime);
+
+
+            DateTime startTime = new DateTime(date.Year, date.Month, date.Day, start.Hour, start.Minute, 0);
+            DateTime endTime = new DateTime(date.Year, date.Month, date.Day, end.Hour, end.Minute, 0);
+
+            if (startTime < DateTime.Now && endTime < DateTime.Now )
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        public async Task<bool> IsThereOtherClassInTheSameTime(CreateYogaClassViewModel model)
+        {
+            bool result = true;
+
+            DateOnly date = DateOnly.Parse(model.Date);
+
+            TimeOnly start = TimeOnly.Parse(model.StartTime);
+
+            TimeOnly end = TimeOnly.Parse(model.EndTime);
+
+
+            DateTime startTime = new DateTime(date.Year, date.Month, date.Day, start.Hour, start.Minute, 0);
+            DateTime endTime = new DateTime(date.Year, date.Month, date.Day, end.Hour, end.Minute, 0);
+
+            var classes = await repo.AllReadonly<YogaClass>()
+                .Where(d => d.StartTime.Date == startTime.Date)
+                .ToListAsync();
+
+            foreach (var item in classes)
+            {
+                if ((item.StartTime >= startTime && item.StartTime <= endTime) || (item.EndTime >= startTime && item.EndTime <= endTime))
+                {
+                    result = false;
+                    return result;
+                }
+            }
+
+            return result;
+
 
         }
 

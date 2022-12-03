@@ -20,7 +20,12 @@ namespace YogaCenter.Core.Contracts
 
         Task<IEnumerable<Category>> GetAllCategoriesAsync();
 
+
         Task AddYogaClass(CreateYogaClassViewModel model);
+
+        bool IsDateAndTimeAreValid(CreateYogaClassViewModel model);
+
+        Task<bool> IsThereOtherClassInTheSameTime(CreateYogaClassViewModel model);
 
 
         Task<EditYogaClassViewModel> GetYogaClassForEdit(int classId);

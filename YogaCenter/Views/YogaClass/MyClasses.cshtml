@@ -21,7 +21,7 @@
         }
 
         #textDiv {
-            position: center;
+            position: sticky;
             width: 10px;
             padding: 40px;
             top: 300px;
@@ -35,7 +35,7 @@
         </div>
         <div class="card-body" id="textDiv">
 
-            <table style="width: 100%" class="table table-hover">
+            <table style="width: 120%" class="table table-hover">
                 <thead>
                     <tr>
                         <td>Date</td>
@@ -69,20 +69,20 @@
                                 <td>
                                     <form asp-area="" asp-controller="YogaClass" asp-action="Leave" method="post" asp-route-classId="@item.Id">
                                         <input type="hidden" value="@item.Id" name="classId" />
-                                        <button type="submit" class="fs-6 btn btn-success mb-3 p-2">Leave</button>
+                                        <button type="submit" class="btn btn-outline-warning">Leave</button>
                                     </form>
                                 </td>
                             }
                             <td>
                                 <form asp-area="" asp-controller="Comment" asp-action="AllComments" method="get" asp-route-classId="@item.Id">
                                     <input type="hidden" value="@item.Id" name="classId" />
-                                    <button type="submit" class="fs-6 btn btn-success mb-3 p-2">Comments</button>
+                                    <button type="submit" class="btn btn-outline-info">Comments</button>
                                 </form>
                             </td>
                             <td>
                                 <form asp-area="" asp-controller="Comment" asp-action="AddComment" method="get" asp-route-classId="@item.Id">
                                     <input type="hidden" value="@item.Id" name="classId" />
-                                    <button type="submit" class="fs-6 btn btn-success mb-3 p-2">Leave comment</button>
+                                    <button type="submit" class="btn btn-outline-success">Leave comment</button>
                                 </form>
                             </td>
                         </tr>

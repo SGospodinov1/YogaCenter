@@ -60,7 +60,7 @@ namespace YogaCenter.Areas.Administration.Controllers
                 ModelState.AddModelError(string.Empty, "Date or Time is invalid.");
             }
 
-            if (await service.IsThereOtherClassInTheSameTime(model) == false)
+            if (await service.IsThereOtherClassInTheSameTime(model) == true)
             {
                 ModelState.AddModelError(string.Empty, "There is other class during this time interval.");
             }
@@ -96,7 +96,7 @@ namespace YogaCenter.Areas.Administration.Controllers
                 ModelState.AddModelError(string.Empty, "Date or Time is invalid.");
             }
 
-            if (await service.IsThereOtherClassInTheSameTime(model) == false)
+            if (await service.IsThereOtherClassInTheSameTime(model) == true)
             {
                 ModelState.AddModelError(string.Empty, "There is other class during this time interval.");
             }

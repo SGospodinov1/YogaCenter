@@ -266,7 +266,7 @@ namespace YogaCenter.Core.Services
 
         public async Task<bool> IsThereOtherClassInTheSameTime(CreateYogaClassViewModel model)
         {
-            bool result = true;
+            bool result = false;
 
             DateOnly date = DateOnly.Parse(model.Date);
 
@@ -286,7 +286,7 @@ namespace YogaCenter.Core.Services
             {
                 if ((item.StartTime >= startTime && item.StartTime <= endTime) || (item.EndTime >= startTime && item.EndTime <= endTime))
                 {
-                    result = false;
+                    result = true;
                     return result;
                 }
             }

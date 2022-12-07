@@ -12,7 +12,6 @@ namespace YogaCenter.Tests.UnitTests
         protected IRepository repo;
 
 
-        protected ApplicationDbContext data;
 
 
 
@@ -31,7 +30,6 @@ namespace YogaCenter.Tests.UnitTests
 
             this.repo = RepositoryMock.Instance;
 
-            this.data = DatabaseMock.Instance;
             this.SeedDatabase();
         }
 

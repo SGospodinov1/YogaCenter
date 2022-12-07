@@ -1,4 +1,5 @@
 ﻿using Castle.Core.Logging;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework.Internal;
 using YogaCenter.Core.Contracts;
@@ -138,14 +139,176 @@ namespace YogaCenter.Tests.UnitTests
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.CategoryId);
-            Assert.AreEqual(1, result.TeacherId);
+            Assert.AreEqual(3, result.TeacherId);
             Assert.AreEqual(10M, result.Price);
             Assert.AreEqual(time, result.StartTime);
         }
 
+        [Test]
+        public void DeleteClass_IsDeleteIsSuccessful()
+        {
+            var result = yogaClassService.DeleteClass(3);
+
+            var yogaClass = repo.All<YogaClass>()
+                .ToList();
+
+            bool IsThereSuchClass = false;
+
+            foreach (var item in yogaClass)
+            {
+                if (item.Id == 3)
+                {
+                    IsThereSuchClass = true;
+                }
+            }
+
+            Assert.AreEqual(false, IsThereSuchClass);
+        }
+
+        [Test]
+        public void IsDateAndTimeAreValid_IsWorkingProperlyForOldDates()
+        {
+            var model = new CreateYogaClassViewModel()
+            {
+                Name = "DinamicYoga",
+                CategoryId = 1,
+                Date = "10.11.2022",
+                StartTime = "10:00",
+                EndTime = "11:30",
+                TeacherId = 3,
+                Price = 10M
+            };
+
+            var result = yogaClassService.IsDateAndTimeAreValid(model);
+
+            Assert.IsFalse(result);
+
+        }
+
+        [Test]
+        public void IsDateAndTimeAreValid_IsWorkingProperlyForFutureDates()
+        {
+            var model = new CreateYogaClassViewModel()
+            {
+                Name = "DinamicYoga",
+                CategoryId = 1,
+                Date = "12.3.2023",
+                StartTime = "10:00",
+                EndTime = "11:30",
+                TeacherId = 3,
+                Price = 10M
+            };
+
+            var result = yogaClassService.IsDateAndTimeAreValid(model);
+
+            Assert.IsTrue(result);
+
+        }
+
+        [Test]
+        public void IsThereOtherClassInTheSameTime_IsWorkingProperlyIfThereIsNoClass()
+        {
+            var model = new CreateYogaClassViewModel()
+            {
+                Name = "DinamicYoga",
+                CategoryId = 1,
+                Date = "12.3.2023",
+                StartTime = "10:00",
+                EndTime = "11:30",
+                TeacherId = 3,
+                Price = 10M
+            };
+
+            var result = yogaClassService.IsThereOtherClassInTheSameTime(model);
+
+            Assert.IsFalse(result.Result);
+
+        }
+
+        [Test]
+        public void IsThereOtherClassInTheSameTime_IsWorkingProperlyIfThereIsAClass()
+        {
+            var model = new CreateYogaClassViewModel()
+            {
+                Name = "DinamicYoga",
+                CategoryId = 1,
+                Date = "20.12.2022",
+                StartTime = "10:00",
+                EndTime = "11:30",
+                TeacherId = 3,
+                Price = 10M
+            };
+
+            var result = yogaClassService.IsThereOtherClassInTheSameTime(model);
+
+            Assert.IsTrue(result.Result);
+
+
+
+        }
+
+        [Test]
+        public void GetYogaClassForEdit_IsDataExtractedCorectly()
+        {
+            var yogaClass = new CreateYogaClassViewModel()
+            {
+                Id = 2,
+                Date = "20 12 2022",
+                StartTime = "09:00",
+                EndTime = "10:30",
+                Name = "In Yoga",
+                CategoryId = 2,
+                Price = 20M,
+
+            };
+
+            var result = yogaClassService.GetYogaClassForEdit(2);
+
+            Assert.AreEqual(yogaClass.Id,result.Result.Id);
+            Assert.AreEqual(yogaClass.Date, result.Result.Date);
+            Assert.AreEqual(yogaClass.StartTime, result.Result.StartTime);
+            Assert.AreEqual(yogaClass.EndTime, result.Result.EndTime);
+            Assert.AreEqual(yogaClass.Name, result.Result.Name);
+            Assert.AreEqual(yogaClass.CategoryId, result.Result.CategoryId);
+            Assert.AreEqual(yogaClass.Price, result.Result.Price);
+        }
+
+        [Test]
+        public void EditClass_AreChangesAreSuccesssful()
+        {
+            var model = new CreateYogaClassViewModel()
+            {
+                Id = 2,
+                Date = "21.12.2022",
+                StartTime = "10.00",
+                EndTime = "11:30",
+                Name = "Find Peace With In Yoga",
+                CategoryId = 2,
+                Price = 15M,
+
+            };
+
+            var result = yogaClassService.EditClass(model);
+
+            var yogaClass = repo.GetByIdAsync<YogaClass>(2);
+
+            string date = yogaClass.Result.StartTime.Date.ToString("dd.MM.yyyy");
+            string start = $"{yogaClass.Result.StartTime.Hour:d2}:{yogaClass.Result.StartTime.Minute:d2}";
+            string end = $"{yogaClass.Result.EndTime.Hour:d2}:{yogaClass.Result.EndTime.Minute:d2}";
+
+            Assert.AreEqual(model.Id, yogaClass.Result.Id);
+            Assert.AreEqual(model.Date, date);
+            Assert.AreEqual(model.StartTime, start);
+            Assert.AreEqual(model.EndTime, end);
+            Assert.AreEqual(model.Name, yogaClass.Result.Name);
+            Assert.AreEqual(model.CategoryId, yogaClass.Result.CategoryId);
+            Assert.AreEqual(model.Price, yogaClass.Result.Price);
+
+        }
+
+
 
     }
 }
-
 
 

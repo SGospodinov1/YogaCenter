@@ -28,9 +28,9 @@ namespace YogaCenter.Core.Contracts
         Task<bool> IsThereOtherClassInTheSameTime(CreateYogaClassViewModel model);
 
 
-        Task<EditYogaClassViewModel> GetYogaClassForEdit(int classId);
+        Task<CreateYogaClassViewModel> GetYogaClassForEdit(int classId);
 
-        Task EditClass(EditYogaClassViewModel model);
+        Task EditClass(CreateYogaClassViewModel model);
 
         Task DeleteClass(int classId);
     }

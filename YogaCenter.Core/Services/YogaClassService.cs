@@ -11,13 +11,12 @@ namespace YogaCenter.Core.Services
     public class YogaClassService : IYogaClassService
     {
         private readonly IRepository repo;
-        private readonly ILogger logger;
+        
 
-        public YogaClassService(IRepository _repo,
-            ILogger<YogaClassService> _logger)
+        public YogaClassService(IRepository _repo)
         {
             repo = _repo;
-            logger = _logger;
+            
         }
 
 
@@ -237,7 +236,7 @@ namespace YogaCenter.Core.Services
             }
             catch (Exception ex)
             {
-                logger.LogError(nameof(AddYogaClass), ex);
+                
                 throw new ApplicationException("Database failed to save Yoga Class", ex);
             }
 
@@ -297,13 +296,13 @@ namespace YogaCenter.Core.Services
 
         }
 
-        public async Task<EditYogaClassViewModel> GetYogaClassForEdit(int classId)
+        public async Task<CreateYogaClassViewModel> GetYogaClassForEdit(int classId)
         {
             var yogaClass = await repo.All<YogaClass>()
                 .Include(c => c.Category)
                 .FirstOrDefaultAsync(y => y.Id == classId);
 
-            var result = new EditYogaClassViewModel()
+            var result = new CreateYogaClassViewModel()
             {
                 Id = yogaClass.Id,
                 Date = yogaClass.StartTime.Date.ToString("dd MM yyyy"),
@@ -317,7 +316,7 @@ namespace YogaCenter.Core.Services
             return result;
         }
 
-        public async Task EditClass(EditYogaClassViewModel model)
+        public async Task EditClass(CreateYogaClassViewModel model)
         {
             var yogaClass = await repo.GetByIdAsync<YogaClass>(model.Id);
 

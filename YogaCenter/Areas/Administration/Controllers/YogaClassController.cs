@@ -89,8 +89,18 @@ namespace YogaCenter.Areas.Administration.Controllers
         }
             
         [HttpPost]
-        public async Task<IActionResult> EditYogaClass(EditYogaClassViewModel model)
+        public async Task<IActionResult> EditYogaClass(CreateYogaClassViewModel model)
         {
+            if (service.IsDateAndTimeAreValid(model) == false)
+            {
+                ModelState.AddModelError(string.Empty, "Date or Time is invalid.");
+            }
+
+            if (await service.IsThereOtherClassInTheSameTime(model) == false)
+            {
+                ModelState.AddModelError(string.Empty, "There is other class during this time interval.");
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(model);

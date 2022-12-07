@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YogaCenter.Infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YogaCenter.Core", "YogaCenter.Core\YogaCenter.Core.csproj", "{7211E2D5-DDB5-4EEB-9EEF-F3ABC549A855}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YogaCenter.Tests", "YogaCenter.Tests\YogaCenter.Tests.csproj", "{5B088052-6D1D-4714-8344-AC17F46259A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7211E2D5-DDB5-4EEB-9EEF-F3ABC549A855}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7211E2D5-DDB5-4EEB-9EEF-F3ABC549A855}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7211E2D5-DDB5-4EEB-9EEF-F3ABC549A855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B088052-6D1D-4714-8344-AC17F46259A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B088052-6D1D-4714-8344-AC17F46259A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B088052-6D1D-4714-8344-AC17F46259A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B088052-6D1D-4714-8344-AC17F46259A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

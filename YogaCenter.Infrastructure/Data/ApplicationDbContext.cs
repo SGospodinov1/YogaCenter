@@ -8,9 +8,21 @@ namespace YogaCenter.Infrastructure.Data
 {
     public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        private bool seedDb;
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, bool seed = true)
             : base(options)
         {
+            if (this.Database.IsRelational())
+            {
+                this.Database.Migrate();
+            }
+            else
+            {
+                this.Database.EnsureCreated();
+            }
+
+            this.seedDb = seed;
         }
 
         public DbSet<YogaClass> YogaClasses { get; set; }
@@ -54,12 +66,17 @@ namespace YogaCenter.Infrastructure.Data
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
 
-            //builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" });
 
-            //builder.ApplyConfiguration(new CategoryConfiguration());
-            //builder.ApplyConfiguration(new TeacherConfiguration());
-            //builder.ApplyConfiguration(new AppUserConfiguration());
-            //builder.ApplyConfiguration(new YogaClassConfiguration());
+            if (this.seedDb)
+            {
+                //builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" });
+
+                //builder.ApplyConfiguration(new CategoryConfiguration());
+                //builder.ApplyConfiguration(new TeacherConfiguration());
+                //builder.ApplyConfiguration(new AppUserConfiguration());
+                //builder.ApplyConfiguration(new YogaClassConfiguration());
+            }
+
 
 
 

@@ -20,14 +20,28 @@ namespace YogaCenter.Core.Services
 
         public async Task AddNewTeacher(NewTeacherViewModel model)
         {
-            var teacher = new Teacher()
-            {
-                Description = model.Description,
-                AppUserId = model.AppUserId
-            };
 
-            await repo.AddAsync(teacher);
-            await repo.SaveChangesAsync();
+            var user = await repo.All<Teacher>()
+                .FirstOrDefaultAsync(t => t.AppUserId == model.AppUserId);
+
+            if (user != null)
+            {
+                user.IsDeleted = false;
+                await repo.SaveChangesAsync();
+            }
+            else
+            {
+                var teacher = new Teacher()
+                {
+                    Description = model.Description,
+                    AppUserId = model.AppUserId
+                };
+
+                await repo.AddAsync(teacher);
+                await repo.SaveChangesAsync();
+            }
+
+            
         }
 
         public async Task<bool> IsTeacher(string userId)
@@ -50,6 +64,7 @@ namespace YogaCenter.Core.Services
         public async Task<IEnumerable<TeacherViewModel>> GetAllTeachers()
         {
             var teachers = await repo.AllReadonly<Teacher>()
+                .Where(t => t.IsDeleted == false)
                 .Select(t => new TeacherViewModel()
                 {
                     Id = t.Id,

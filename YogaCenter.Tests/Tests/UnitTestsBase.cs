@@ -123,8 +123,8 @@ namespace YogaCenter.Tests.UnitTests
                 {
                     Id = 1,
                     Name = "Hatha Yoga",
-                    StartTime = new DateTime(2022, 11, 28, 18, 00, 0),
-                    EndTime = new DateTime(2022, 11, 28, 19, 30, 0),
+                    StartTime = new DateTime(2022, 12, 28, 18, 00, 0),
+                    EndTime = new DateTime(2022, 12, 28, 19, 30, 0),
                     CategoryId = 1,
                     TeacherId = 1,
                     Price = 15M,
@@ -145,6 +145,7 @@ namespace YogaCenter.Tests.UnitTests
                     Price = 20M,
                     AppUsersYogaClasses = new List<AppUserYogaClass>()
                 }
+
 
 
             };

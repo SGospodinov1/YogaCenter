@@ -23,9 +23,6 @@ namespace YogaCenter.Infrastructure.Data.DataModels
         [Precision(18,2)]
         public decimal Price { get; set; }
 
-        
-        public bool IsEdited { get; set; } = false;
-
         [Required]
         public int CategoryId { get; set; }
 

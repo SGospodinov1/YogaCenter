@@ -24,6 +24,7 @@ namespace YogaCenter.Core.Services
         public async Task<IEnumerable<YogaClassViewModel>> GetAll()
         {
             var classes = await repo.AllReadonly<YogaClass>()
+                .Where(t => t.Teacher.IsDeleted == false)
                 .OrderBy(d => d.StartTime.Date)
                 .ThenBy(t => t.StartTime.Hour)
                 .Select(y => new YogaClassViewModel()
@@ -84,6 +85,7 @@ namespace YogaCenter.Core.Services
                 .FirstOrDefaultAsync();
 
             var classes = user.AppUsersYogaClasses
+                .Where(t => t.YogaClass.Teacher.IsDeleted == false)
                 .OrderBy(d => d.YogaClass.StartTime.Date)
                 .ThenBy(t => t.YogaClass.StartTime.Hour)
                 .Select(y => new YogaClassViewModel()
@@ -305,12 +307,12 @@ namespace YogaCenter.Core.Services
             var result = new CreateYogaClassViewModel()
             {
                 Id = yogaClass.Id,
-                Date = yogaClass.StartTime.Date.ToString("dd MM yyyy"),
+                Date = $"{yogaClass.StartTime.Year}-{yogaClass.StartTime.Month}-{yogaClass.StartTime.Day}",
                 StartTime = $"{yogaClass.StartTime.Hour:d2}:{yogaClass.StartTime.Minute:d2}",
                 EndTime = $"{yogaClass.EndTime.Hour:d2}:{yogaClass.EndTime.Minute:d2}",
                 Name = yogaClass.Name,
                 CategoryId = yogaClass.CategoryId,
-                Price = yogaClass.Price,
+                Price = yogaClass.Price
             };
 
             return result;
@@ -335,7 +337,7 @@ namespace YogaCenter.Core.Services
             yogaClass.StartTime = startTime;
             yogaClass.EndTime = endTime;
             yogaClass.Price = model.Price;
-            yogaClass.IsEdited = true;
+            
 
 
             await repo.SaveChangesAsync();

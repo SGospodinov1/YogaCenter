@@ -1,12 +1,11 @@
 ﻿using Castle.Core.Logging;
 using Microsoft.EntityFrameworkCore;
 using Moq;
-using NUnit.Framework.Internal;
 using YogaCenter.Core.Contracts;
 using YogaCenter.Core.Models.Administrator;
 using YogaCenter.Core.Services;
 using YogaCenter.Infrastructure.Data.DataModels;
-using YogaCenter.Tests.Mocks;
+
 
 namespace YogaCenter.Tests.UnitTests
 {
@@ -123,7 +122,7 @@ namespace YogaCenter.Tests.UnitTests
             {
                 Name = "DinamicYoga",
                 CategoryId = 1,
-                Date = "10.12.2022",
+                Date = "2022-12-10",
                 StartTime = "10:00",
                 EndTime = "11:30",
                 TeacherId = 3,
@@ -172,7 +171,7 @@ namespace YogaCenter.Tests.UnitTests
             {
                 Name = "DinamicYoga",
                 CategoryId = 1,
-                Date = "10.11.2022",
+                Date = "2022-11-10",
                 StartTime = "10:00",
                 EndTime = "11:30",
                 TeacherId = 3,
@@ -190,11 +189,11 @@ namespace YogaCenter.Tests.UnitTests
         {
             var model = new CreateYogaClassViewModel()
             {
-                Name = "DinamicYoga",
+                Name = "Yoga",
                 CategoryId = 1,
-                Date = "12.3.2023",
-                StartTime = "10:00",
-                EndTime = "11:30",
+                Date = "2023-12-28",
+                StartTime = "17:00",
+                EndTime = "18:30",
                 TeacherId = 3,
                 Price = 10M
             };
@@ -212,7 +211,7 @@ namespace YogaCenter.Tests.UnitTests
             {
                 Name = "DinamicYoga",
                 CategoryId = 1,
-                Date = "12.3.2023",
+                Date = "2023-3-12",
                 StartTime = "10:00",
                 EndTime = "11:30",
                 TeacherId = 3,
@@ -230,11 +229,11 @@ namespace YogaCenter.Tests.UnitTests
         {
             var model = new CreateYogaClassViewModel()
             {
-                Name = "DinamicYoga",
+                Name = "Yoga",
                 CategoryId = 1,
-                Date = "20.12.2022",
-                StartTime = "10:00",
-                EndTime = "11:30",
+                Date = "2022-12-28",
+                StartTime = "17:00",
+                EndTime = "18:30",
                 TeacherId = 3,
                 Price = 10M
             };
@@ -252,17 +251,17 @@ namespace YogaCenter.Tests.UnitTests
         {
             var yogaClass = new CreateYogaClassViewModel()
             {
-                Id = 2,
-                Date = "20 12 2022",
-                StartTime = "09:00",
-                EndTime = "10:30",
-                Name = "In Yoga",
-                CategoryId = 2,
-                Price = 20M,
+                Id = 1,
+                Date = "2022-12-28",
+                StartTime = "18:00",
+                EndTime = "19:30",
+                Name = "Hatha Yoga",
+                CategoryId = 1,
+                Price = 15M,
 
             };
 
-            var result = yogaClassService.GetYogaClassForEdit(2);
+            var result = yogaClassService.GetYogaClassForEdit(1);
 
             Assert.AreEqual(yogaClass.Id,result.Result.Id);
             Assert.AreEqual(yogaClass.Date, result.Result.Date);
@@ -279,8 +278,8 @@ namespace YogaCenter.Tests.UnitTests
             var model = new CreateYogaClassViewModel()
             {
                 Id = 2,
-                Date = "21.12.2022",
-                StartTime = "10.00",
+                Date = "2022-12-21",
+                StartTime = "10:00",
                 EndTime = "11:30",
                 Name = "Find Peace With In Yoga",
                 CategoryId = 2,
@@ -292,7 +291,7 @@ namespace YogaCenter.Tests.UnitTests
 
             var yogaClass = repo.GetByIdAsync<YogaClass>(2);
 
-            string date = yogaClass.Result.StartTime.Date.ToString("dd.MM.yyyy");
+            string date = $"{yogaClass.Result.StartTime.Year}-{yogaClass.Result.StartTime.Month}-{yogaClass.Result.StartTime.Day}";
             string start = $"{yogaClass.Result.StartTime.Hour:d2}:{yogaClass.Result.StartTime.Minute:d2}";
             string end = $"{yogaClass.Result.EndTime.Hour:d2}:{yogaClass.Result.EndTime.Minute:d2}";
 

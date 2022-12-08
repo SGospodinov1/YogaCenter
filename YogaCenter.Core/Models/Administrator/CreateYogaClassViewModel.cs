@@ -16,7 +16,7 @@ namespace YogaCenter.Core.Models.Administrator
         [Required]
         public string Date { get; set; }
 
-        public DateTime DateTime { get; set; }
+        //public DateTime DateTime { get; set; }
 
         [Required]
         public string StartTime { get; set; }

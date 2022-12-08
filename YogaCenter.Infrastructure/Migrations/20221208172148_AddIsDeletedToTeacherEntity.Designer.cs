@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YogaCenter.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using YogaCenter.Infrastructure.Data;
 namespace YogaCenter.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221208172148_AddIsDeletedToTeacherEntity")]
+    partial class AddIsDeletedToTeacherEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,8 +53,8 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5419f427-5663-4cf8-84ad-e4def414930e",
-                            ConcurrencyStamp = "f7378d93-209d-481f-a7db-68d144220d6f",
+                            Id = "601ee1ad-a621-42be-bfed-b8383bf6df4c",
+                            ConcurrencyStamp = "122a704e-5062-40fd-84a7-ee4b28cc0c1e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -247,7 +249,7 @@ namespace YogaCenter.Infrastructure.Migrations
                         {
                             Id = "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "563caa9e-3f52-4613-a81b-676221d51316",
+                            ConcurrencyStamp = "c7873e5d-fc37-4c2d-8274-a22044b53d0f",
                             Email = "teacher@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Kristiana",
@@ -255,9 +257,9 @@ namespace YogaCenter.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "teacher@mail.com",
                             NormalizedUserName = "teacher@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHRS6fRNbZ8e1xpWt/9OtnU+J971FVmdlWlBegFw164Dw4J7R2DBnT74ZVcOtC57mA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDPUbDCEzA1G5MQ2CqU9uwaoOmRm4dxvWpoVKziOZmviFcTiaNdBX8ig7AMXrNi76w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "47a89ba5-5dfe-4d7f-b055-a657381ebca0",
+                            SecurityStamp = "3a16e96f-18cf-475c-89c9-2ac151f10be3",
                             TwoFactorEnabled = false,
                             UserName = "teacher@mail.com"
                         },
@@ -265,7 +267,7 @@ namespace YogaCenter.Infrastructure.Migrations
                         {
                             Id = "8175b008 - d14c - 4214 - 9e7e - 8dc0bdfa6b0c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ae128df7-b206-4df5-9cc5-d37e0f0d8ce7",
+                            ConcurrencyStamp = "99ef1b8a-32bc-4abc-87cf-cc44cf65fc75",
                             Email = "user@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Maria",
@@ -273,9 +275,9 @@ namespace YogaCenter.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "user@mail.com",
                             NormalizedUserName = "user@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHNMSRTt5Da0bCGaxzcogb/TTOY0R9V6QKvc0WO0hg42B2op3fcNRJtWcPBe91FwhA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECSVvyIeCUURs5U8Zms79ffopB1KSmybq5KnKS4DXtOlJ5OQ+ro7tYZ4130nKP4csg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9fc71440-d700-45a5-8d9c-2ec719e9cd34",
+                            SecurityStamp = "84a2d2e2-3f47-47cd-a516-c8a695791799",
                             TwoFactorEnabled = false,
                             UserName = "user@mail.com"
                         });

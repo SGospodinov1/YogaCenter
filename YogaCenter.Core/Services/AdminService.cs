@@ -90,7 +90,7 @@ namespace YogaCenter.Core.Services
             var teacher = await repo.AllReadonly<Teacher>()
                 .FirstOrDefaultAsync(t => t.AppUserId == id);
 
-            repo.Delete(teacher);
+            teacher.IsDeleted = true;
 
             await repo.SaveChangesAsync();
         }

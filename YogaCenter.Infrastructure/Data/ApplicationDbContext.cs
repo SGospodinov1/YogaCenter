@@ -22,7 +22,7 @@ namespace YogaCenter.Infrastructure.Data
                 this.Database.EnsureCreated();
             }
 
-            
+
             this.seedDb = seed;
         }
 
@@ -70,12 +70,12 @@ namespace YogaCenter.Infrastructure.Data
 
             if (this.seedDb)
             {
-                builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" });
+                //builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" });
 
-                builder.ApplyConfiguration(new CategoryConfiguration());
-                builder.ApplyConfiguration(new TeacherConfiguration());
-                builder.ApplyConfiguration(new AppUserConfiguration());
-                builder.ApplyConfiguration(new YogaClassConfiguration());
+                //builder.ApplyConfiguration(new CategoryConfiguration());
+                //builder.ApplyConfiguration(new TeacherConfiguration());
+                //builder.ApplyConfiguration(new AppUserConfiguration());
+                //builder.ApplyConfiguration(new YogaClassConfiguration());
             }
 
 

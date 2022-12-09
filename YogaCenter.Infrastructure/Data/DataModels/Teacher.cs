@@ -24,6 +24,8 @@ namespace YogaCenter.Infrastructure.Data.DataModels
         [ForeignKey(nameof(AppUserId))]
         public AppUser AppUser { get; set; }
 
-        public bool IsDeleted { get; set; } = false;
+        [Required]
+        public bool IsDeleted { get; set; }
+       
     }
 }

@@ -11,50 +11,46 @@ namespace YogaCenter.Core.Services
     public class TeacherService : ITeacherService
     {
         private readonly IRepository repo;
-        
+
         public TeacherService(IRepository _repo)
         {
-            repo =_repo;
-            
+            repo = _repo;
+
         }
 
         public async Task AddNewTeacher(NewTeacherViewModel model)
         {
 
-            var user = await repo.All<Teacher>()
-                .FirstOrDefaultAsync(t => t.AppUserId == model.AppUserId);
-
-            if (user != null)
+            var teacher = new Teacher()
             {
-                user.IsDeleted = false;
-                await repo.SaveChangesAsync();
-            }
-            else
-            {
-                var teacher = new Teacher()
-                {
-                    Description = model.Description,
-                    AppUserId = model.AppUserId
-                };
+                Description = model.Description,
+                AppUserId = model.AppUserId
+            };
 
-                await repo.AddAsync(teacher);
-                await repo.SaveChangesAsync();
-            }
-
-            
+            await repo.AddAsync(teacher);
+            await repo.SaveChangesAsync();
         }
 
-        public async Task<bool> IsTeacher(string userId)
+
+    
+
+    public async Task<bool> IsTeacher(string userId)
         {
             bool result = true;
 
             var teacher = await repo.AllReadonly<Teacher>()
-                .Where(t => t.AppUserId == userId)
-                .ToListAsync();
+                .FirstOrDefaultAsync(t => t.AppUserId == userId);
 
-            if (teacher.Count == 0)
+            if (teacher == null)
             {
                 result = false;
+            }
+            else
+            {
+                var oldTeacher = await repo.GetByIdAsync<Teacher>(teacher.Id);
+
+                oldTeacher.IsDeleted = false;
+                await repo.SaveChangesAsync();
             }
 
 

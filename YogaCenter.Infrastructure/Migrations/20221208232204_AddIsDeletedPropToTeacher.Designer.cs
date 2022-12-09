@@ -12,8 +12,8 @@ using YogaCenter.Infrastructure.Data;
 namespace YogaCenter.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221208172148_AddIsDeletedToTeacherEntity")]
-    partial class AddIsDeletedToTeacherEntity
+    [Migration("20221208232204_AddIsDeletedPropToTeacher")]
+    partial class AddIsDeletedPropToTeacher
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,15 +49,6 @@ namespace YogaCenter.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "601ee1ad-a621-42be-bfed-b8383bf6df4c",
-                            ConcurrencyStamp = "122a704e-5062-40fd-84a7-ee4b28cc0c1e",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -243,44 +234,6 @@ namespace YogaCenter.Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "c7873e5d-fc37-4c2d-8274-a22044b53d0f",
-                            Email = "teacher@mail.com",
-                            EmailConfirmed = false,
-                            FirstName = "Kristiana",
-                            LastName = "Bakalova",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "teacher@mail.com",
-                            NormalizedUserName = "teacher@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDPUbDCEzA1G5MQ2CqU9uwaoOmRm4dxvWpoVKziOZmviFcTiaNdBX8ig7AMXrNi76w==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "3a16e96f-18cf-475c-89c9-2ac151f10be3",
-                            TwoFactorEnabled = false,
-                            UserName = "teacher@mail.com"
-                        },
-                        new
-                        {
-                            Id = "8175b008 - d14c - 4214 - 9e7e - 8dc0bdfa6b0c",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "99ef1b8a-32bc-4abc-87cf-cc44cf65fc75",
-                            Email = "user@mail.com",
-                            EmailConfirmed = false,
-                            FirstName = "Maria",
-                            LastName = "Petrova",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "user@mail.com",
-                            NormalizedUserName = "user@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAECSVvyIeCUURs5U8Zms79ffopB1KSmybq5KnKS4DXtOlJ5OQ+ro7tYZ4130nKP4csg==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "84a2d2e2-3f47-47cd-a516-c8a695791799",
-                            TwoFactorEnabled = false,
-                            UserName = "user@mail.com"
-                        });
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.AppUserYogaClass", b =>
@@ -314,33 +267,6 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Hatha Yoga"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Ashtanga Yoga"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Iyengar Yoga"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Viniasa Yoga"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "In Yoga"
-                        });
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.Comment", b =>
@@ -431,15 +357,6 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.HasIndex("AppUserId");
 
                     b.ToTable("Teachers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AppUserId = "737b8ae9-fff1-41e0-bb81-7ed16a44f1c2",
-                            Description = "I`m a yoga teacher.",
-                            IsDeleted = false
-                        });
                 });
 
             modelBuilder.Entity("YogaCenter.Infrastructure.Data.DataModels.YogaClass", b =>
@@ -478,28 +395,6 @@ namespace YogaCenter.Infrastructure.Migrations
                     b.HasIndex("TeacherId");
 
                     b.ToTable("YogaClasses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            EndTime = new DateTime(2022, 11, 11, 19, 30, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Balance and clear your mind",
-                            Price = 15m,
-                            StartTime = new DateTime(2022, 11, 11, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            TeacherId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 4,
-                            EndTime = new DateTime(2022, 11, 11, 21, 30, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Dinamic Viniasa with Krisi",
-                            Price = 20m,
-                            StartTime = new DateTime(2022, 11, 11, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            TeacherId = 1
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -40,5 +40,6 @@ namespace YogaCenter.Infrastructure.Data.DataModels
 
         public List<Comment> Comments { get; set; } = new List<Comment>();
 
+        
     }
 }

@@ -87,8 +87,10 @@ namespace YogaCenter.Core.Services
 
         public async Task RemoveTeacher(string id)
         {
-            var teacher = await repo.AllReadonly<Teacher>()
+            var user = await repo.AllReadonly<Teacher>()
                 .FirstOrDefaultAsync(t => t.AppUserId == id);
+
+            var teacher = await repo.GetByIdAsync<Teacher>(user.Id);
 
             teacher.IsDeleted = true;
 

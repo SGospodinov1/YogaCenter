@@ -9,9 +9,13 @@
 
   <ItemGroup>
     <Compile Remove="Areas\Administraation\**" />
+    <Compile Remove="Areas\Administration\Models\**" />
     <Content Remove="Areas\Administraation\**" />
+    <Content Remove="Areas\Administration\Models\**" />
     <EmbeddedResource Remove="Areas\Administraation\**" />
+    <EmbeddedResource Remove="Areas\Administration\Models\**" />
     <None Remove="Areas\Administraation\**" />
+    <None Remove="Areas\Administration\Models\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,10 +29,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\YogaCenter.Core\YogaCenter.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Administration\Models\" />
   </ItemGroup>
 
 </Project>

@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\YogaCenter.Infrastructure\YogaCenter.Infrastructure.csproj" />
+    <Compile Remove="Constants\**" />
+    <EmbeddedResource Remove="Constants\**" />
+    <None Remove="Constants\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Constants\" />
+    <ProjectReference Include="..\YogaCenter.Infrastructure\YogaCenter.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

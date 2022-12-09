@@ -61,8 +61,58 @@ namespace YogaCenter.Tests.Tests
             Assert.AreEqual(4, result.Result.Count());
         }
 
+        [Test]
+        public void MyInfo_CheckIfResultIsCorrect()
+        {
+            var teacher = repo.GetByIdAsync<Teacher>(1);
 
+            var result = teacherService.MyInfo("TeacherId");
 
+            Assert.AreEqual(teacher.Result.AppUser.FirstName, result.Result.FirstName);
+            Assert.AreEqual(teacher.Result.AppUser.LastName, result.Result.LastName);
+            Assert.AreEqual(teacher.Result.AppUser.Email, result.Result.Email);
+            Assert.AreEqual(teacher.Result.Description, result.Result.Description);
+        }
+
+        [Test]
+        public void InfoDetailsById_CheckIfResultIsCorrect()
+        {
+            var model = new InfoDetailsViewModel()
+            {
+                Id = 2,
+                Description = "I`m your best teacher."
+            };
+
+            var result = teacherService.InfoDetailsById(2);
+
+            Assert.AreEqual(model.Id, result.Result.Id);
+            Assert.AreEqual(model.Description, result.Result.Description);
+
+        }
+
+        [Test]
+        public void EditInfo_IsDescriptionChange()
+        {
+            var model = new InfoDetailsViewModel()
+            {
+                Id = 1,
+                Description = "Best teacher ever."
+            };
+
+            var result = teacherService.EditInfo(model);
+
+            var teacher = repo.GetByIdAsync<Teacher>(1);
+
+            Assert.AreEqual(model.Description, teacher.Result.Description);
+        }
+
+        [Test]
+        public void FindTeacherId_IsIdFound()
+        {
+            var result = teacherService.FindTeacherId("TeacherId");
+
+            Assert.AreEqual(1, result.Result);
+        }
 
     }
 }

@@ -43,7 +43,7 @@ namespace YogaCenter.Core.Services
         }
 
         /// <summary>
-        /// 
+        /// This method check if the User is Teacher or not. Also if Teacher was removed from role and afterthat returned to role the method find him and change IsDeleted status to "false"
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
@@ -60,16 +60,24 @@ namespace YogaCenter.Core.Services
             }
             else
             {
-                var oldTeacher = await repo.GetByIdAsync<Teacher>(teacher.Id);
+                if (teacher.IsDeleted == true)
+                {
+                    var oldTeacher = await repo.GetByIdAsync<Teacher>(teacher.Id);
 
-                oldTeacher.IsDeleted = false;
-                await repo.SaveChangesAsync();
+                    oldTeacher.IsDeleted = false;
+                    await repo.SaveChangesAsync();
+                }
+                
             }
 
 
             return result;
         }
 
+        /// <summary>
+        /// This method take all teachers info to show it to Users
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<TeacherViewModel>> GetAllTeachers()
         {
             var teachers = await repo.AllReadonly<Teacher>()
@@ -86,6 +94,11 @@ namespace YogaCenter.Core.Services
             return teachers;
         }
 
+        /// <summary>
+        /// This method give to Teacher information about himself/herself
+        /// </summary>
+        /// <param name="usrId"></param>
+        /// <returns></returns>
         public async Task<MyInfoViewModel> MyInfo(string usrId)
         {
             var teacher = await repo.AllReadonly<Teacher>()
@@ -105,6 +118,11 @@ namespace YogaCenter.Core.Services
             return result;
         }
 
+        /// <summary>
+        /// This method is used to find the Teacher in database and add its information in the Edit View
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<InfoDetailsViewModel> InfoDetailsById(int id)
         {
             var teacher = await repo.AllReadonly<Teacher>()
@@ -120,6 +138,11 @@ namespace YogaCenter.Core.Services
             return result;
         }
 
+        /// <summary>
+        /// This method is used to add edited Teacher description to database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task EditInfo(InfoDetailsViewModel model)
         {
             var teacher = await repo.GetByIdAsync<Teacher>(model.Id);
@@ -131,7 +154,11 @@ namespace YogaCenter.Core.Services
 
         }
 
-
+        /// <summary>
+        /// This method is used to give Id of the Teacher
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public async Task<int> FindTeacherId(string userId)
         {
             var teacher = await repo.All<Teacher>()

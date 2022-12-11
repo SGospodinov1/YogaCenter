@@ -8,8 +8,14 @@ using YogaCenter.Infrastructure.Data.DataModels;
 
 namespace YogaCenter.Core.Services
 {
+    /// <summary>
+    /// YogaClassService keep all methods that are connected to YogaClasses
+    /// </summary>
     public class YogaClassService : IYogaClassService
     {
+        /// <summary>
+        /// Use repository to connect to Database
+        /// </summary>
         private readonly IRepository repo;
         
 
@@ -20,7 +26,10 @@ namespace YogaCenter.Core.Services
         }
 
 
-
+        /// <summary>
+        /// This method gives information about all YogaClasses and sort it by date and starting hour. If Teacher IsDeleted property has status "true" its YogaClasses are not shown.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<YogaClassViewModel>> GetAll()
         {
             var classes = await repo.AllReadonly<YogaClass>()
@@ -62,6 +71,11 @@ namespace YogaCenter.Core.Services
             return classes;
         }
 
+        /// <summary>
+        /// This method give information about User by its Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<AppUser> GetUser(string id)
         {
             var user = await repo.All<AppUser>()
@@ -71,6 +85,11 @@ namespace YogaCenter.Core.Services
             return user;
         }
 
+        /// <summary>
+        /// This method gives information about User classes that he/she joined
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<YogaClassViewModel>> GetMyClasses(string userId)
         {
             var user = await repo.AllReadonly<AppUser>()
@@ -122,6 +141,12 @@ namespace YogaCenter.Core.Services
             return classes;
         }
 
+        /// <summary>
+        /// This method add user to class by hitting Join button from User
+        /// </summary>
+        /// <param name="classId"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public async Task AddToMyClasses(int classId, string userId)
         {
             var user = await repo.All<AppUser>()
@@ -144,6 +169,12 @@ namespace YogaCenter.Core.Services
             await repo.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// This method remove user from class by hitting Leave button from User
+        /// </summary>
+        /// <param name="classId"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public async Task RemoveFromMyClasses(int classId, string userId)
         {
             var user = await repo.All<AppUser>()
@@ -160,6 +191,11 @@ namespace YogaCenter.Core.Services
             await repo.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// This method give all classes that belongs to the Teacher
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<YogaClassViewModel>> TeacherClasses(string userId)
         {
             
@@ -201,6 +237,10 @@ namespace YogaCenter.Core.Services
             return classes;
         }
 
+        /// <summary>
+        /// This method give all Categories and it is used in create and update methods in the controller
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
         {
             var categories = await repo.All<Category>().ToListAsync();
@@ -208,7 +248,12 @@ namespace YogaCenter.Core.Services
             return categories;
         }
 
-
+        /// <summary>
+        /// This method add YogaClass to database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <exception cref="ApplicationException"></exception>
         public async Task AddYogaClass(CreateYogaClassViewModel model)
         {
             DateOnly date = DateOnly.Parse(model.Date);
@@ -244,6 +289,11 @@ namespace YogaCenter.Core.Services
 
         }
 
+        /// <summary>
+        /// This method check if date that are given to ViewModel is passed or not
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public bool IsDateAndTimeAreValid(CreateYogaClassViewModel model)
         {
             bool result = true;
@@ -266,6 +316,11 @@ namespace YogaCenter.Core.Services
             return result;
         }
 
+        /// <summary>
+        /// This method check if there is another class in the same time.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<bool> IsThereOtherClassInTheSameTime(CreateYogaClassViewModel model)
         {
             bool result = false;
@@ -298,6 +353,11 @@ namespace YogaCenter.Core.Services
 
         }
 
+        /// <summary>
+        /// This method take information from database and give it to the edit View
+        /// </summary>
+        /// <param name="classId"></param>
+        /// <returns></returns>
         public async Task<CreateYogaClassViewModel> GetYogaClassForEdit(int classId)
         {
             var yogaClass = await repo.All<YogaClass>()
@@ -318,6 +378,11 @@ namespace YogaCenter.Core.Services
             return result;
         }
 
+        /// <summary>
+        /// This method add edited YogaClass to database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task EditClass(CreateYogaClassViewModel model)
         {
             var yogaClass = await repo.GetByIdAsync<YogaClass>(model.Id);
@@ -343,6 +408,11 @@ namespace YogaCenter.Core.Services
             await repo.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// This method remove active YogaClass from database
+        /// </summary>
+        /// <param name="classId"></param>
+        /// <returns></returns>
         public async Task DeleteClass(int classId)
         {
 

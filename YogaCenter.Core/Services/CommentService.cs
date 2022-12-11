@@ -6,8 +6,14 @@ using YogaCenter.Infrastructure.Data.DataModels;
 
 namespace YogaCenter.Core.Services
 {
+    /// <summary>
+    /// CommentService keep all methods that are connected to Comments
+    /// </summary>
     public class CommentService : ICommentService
     {
+        /// <summary>
+        /// Use repository to connect to Database
+        /// </summary>
         private readonly IRepository repo;
 
         public CommentService(IRepository _repo)
@@ -15,6 +21,11 @@ namespace YogaCenter.Core.Services
             repo = _repo;
 
         }
+        /// <summary>
+        /// This method give information about all Comments in given YogaClass. It extract description and fullname of the User.
+        /// </summary>
+        /// <param name="yogaClassId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<CommentViewModel>> GetAll(int yogaClassId)
         {
             var yogaClass = await repo.AllReadonly<YogaClass>()
@@ -36,10 +47,13 @@ namespace YogaCenter.Core.Services
             return comments;
 
 
-
-
         }
 
+        /// <summary>
+        /// This method add new Comment to specific YogaClass
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task Add(CommentViewModel model)
         {
             var yogaClass = await repo.GetByIdAsync<YogaClass>(model.YogaClassId);
@@ -57,6 +71,11 @@ namespace YogaCenter.Core.Services
 
         }
 
+        /// <summary>
+        /// This method return the name of the YogaClass and its information is used in the View on top of all comments.
+        /// </summary>
+        /// <param name="yogaClassId"></param>
+        /// <returns></returns>
         public async Task<string> YogaClassName(int yogaClassId)
         {
             var yogaClass = await repo.GetByIdAsync<YogaClass>(yogaClassId);
@@ -64,6 +83,11 @@ namespace YogaCenter.Core.Services
             return yogaClass.Name;
         }
 
+        /// <summary>
+        /// This method find User in Database and return its FullName
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public async Task<string> UserFullName(string userId)
         {
             var user = await repo.GetByIdAsync<AppUser>(userId);

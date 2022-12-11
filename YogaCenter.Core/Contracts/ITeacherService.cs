@@ -5,6 +5,10 @@ using YogaCenter.Core.Models.Administrator;
 
 namespace YogaCenter.Core.Contracts
 {
+
+    /// <summary>
+    /// Interface for TeacherService
+    /// </summary>
     public interface ITeacherService
     {
         Task AddNewTeacher(NewTeacherViewModel model);

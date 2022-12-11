@@ -4,6 +4,10 @@ using YogaCenter.Core.Models.Administrator;
 
 namespace YogaCenter.Core.Contracts
 {
+
+    /// <summary>
+    /// Interface for PostService
+    /// </summary>
     public interface IPostService
     {
         Task<IEnumerable<PostViewModel>> AllPosts();

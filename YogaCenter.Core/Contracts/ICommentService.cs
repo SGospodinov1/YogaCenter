@@ -2,6 +2,9 @@
 
 namespace YogaCenter.Core.Contracts
 {
+    /// <summary>
+    /// Interface for CommentService
+    /// </summary>
     public interface ICommentService
     {
         Task<IEnumerable<CommentViewModel>> GetAll(int yogaClassId);

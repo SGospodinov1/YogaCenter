@@ -29,11 +29,12 @@ namespace YogaCenter.Tests.Tests
 
             var result = teacherService.AddNewTeacher(model);
 
-            var teacher = repo.GetByIdAsync<Teacher>(4);
+            var teacher = repo.GetByIdAsync<Teacher>(5);
 
             Assert.IsNotNull(teacher);
             Assert.AreEqual(model.AppUserId, teacher.Result.AppUserId);
             Assert.AreEqual(model.Description, teacher.Result.Description);
+            Assert.AreEqual(false, teacher.Result.IsDeleted);
 
         }
 

@@ -1,6 +1,7 @@
 ﻿using Castle.Core.Logging;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using NUnit.Framework.Constraints;
 using YogaCenter.Core.Contracts;
 using YogaCenter.Core.Models.Administrator;
 using YogaCenter.Core.Services;
@@ -122,7 +123,7 @@ namespace YogaCenter.Tests.UnitTests
             {
                 Name = "DinamicYoga",
                 CategoryId = 1,
-                Date = "2022-12-10",
+                Date = "2022-12-29",
                 StartTime = "10:00",
                 EndTime = "11:30",
                 TeacherId = 3,
@@ -131,7 +132,7 @@ namespace YogaCenter.Tests.UnitTests
 
             yogaClassService.AddYogaClass(model);
 
-            DateTime time = new DateTime(2022, 12, 10, 10, 00, 0);
+            DateTime time = new DateTime(2022, 12, 29, 10, 00, 0);
 
             var result = repo.All<YogaClass>()
                 .FirstOrDefault(y => y.Name == "DinamicYoga");
@@ -305,6 +306,16 @@ namespace YogaCenter.Tests.UnitTests
 
         }
 
+        [Test]
+        public void DeleteClass_IsDeleted()
+        {
+            var result = yogaClassService.DeleteClass(4);
+
+            var yclass = repo.AllReadonly<Post>()
+                .Where(p => p.Id == 4);
+
+            Assert.IsEmpty(yclass);
+        }
 
 
     }

@@ -7,12 +7,23 @@ using YogaCenter.Infrastructure.Data.DataModels;
 
 namespace YogaCenter.Core.Services
 {
+    /// <summary>
+    /// AdminService keep all methods which help to connect or disconnect user and role
+    /// </summary>
     public class AdminService : IAdminService
     {
+        /// <summary>
+        /// Use repository to connect to Database
+        /// </summary>
         private readonly IRepository repo;
+        /// <summary>
+        /// Use UserManager to check if user is in role
+        /// </summary>
         private readonly UserManager<AppUser> userManager;
+        /// <summary>
+        /// Use RoleManage to give or remove roles
+        /// </summary>
         private readonly RoleManager<IdentityRole> roleManager;
-
         public AdminService(IRepository _repo,
             UserManager<AppUser> _userManager,
             RoleManager<IdentityRole> _roleManager)
@@ -22,6 +33,10 @@ namespace YogaCenter.Core.Services
             roleManager = _roleManager;
         }
 
+        /// <summary>
+        /// This method help to show all Users to the Admin, it take info from database and send it to the View. It also check if the User is in role "Administrator" or not.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<UserViewModel>> AllUsers()
         {
             
@@ -54,7 +69,11 @@ namespace YogaCenter.Core.Services
             return users;
         }
 
-        
+        /// <summary>
+        /// This method create role "Administrator" if there isn`t such role and give the User role "Administrator" after Admin hit the button
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task Add(string id)
         {
             var roleName = "Administrator";
@@ -73,6 +92,11 @@ namespace YogaCenter.Core.Services
 
         }
 
+        /// <summary>
+        /// This method remove User from role "Administrator" after Admin hit the button
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task Remove(string id)
         {
             var roleName = "Administrator";
@@ -85,6 +109,11 @@ namespace YogaCenter.Core.Services
             }
         }
 
+        /// <summary>
+        /// This method set Teacher property IsDeleted to status "true"
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task RemoveTeacher(string id)
         {
             var user = await repo.AllReadonly<Teacher>()

@@ -5,6 +5,9 @@ using YogaCenter.Infrastructure.Data.DataModels;
 
 namespace YogaCenter.Infrastructure.Data.Configuration
 {
+    /// <summary>
+    /// Configuration for seeding Users in Database
+    /// </summary>
     public class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
     {
         public void Configure(EntityTypeBuilder<AppUser> builder)

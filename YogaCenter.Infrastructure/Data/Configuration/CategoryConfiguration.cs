@@ -4,6 +4,9 @@ using YogaCenter.Infrastructure.Data.DataModels;
 
 namespace YogaCenter.Infrastructure.Data.Configuration
 {
+    /// <summary>
+    /// Configuration for seeding Categories in Database
+    /// </summary>
     internal class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
         public void Configure(EntityTypeBuilder<Category> builder)

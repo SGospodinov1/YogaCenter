@@ -4,6 +4,10 @@ using YogaCenter.Infrastructure.Data.DataModels;
 
 namespace YogaCenter.Infrastructure.Data.Configuration
 {
+
+    /// <summary>
+    /// Configuration for seeding Teacher in Database
+    /// </summary>
     internal class TeacherConfiguration : IEntityTypeConfiguration<Teacher>
     {
         public void Configure(EntityTypeBuilder<Teacher> builder)

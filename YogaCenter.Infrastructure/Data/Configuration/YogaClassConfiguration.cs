@@ -4,6 +4,10 @@ using YogaCenter.Infrastructure.Data.DataModels;
 
 namespace YogaCenter.Infrastructure.Data.Configuration
 {
+
+    /// <summary>
+    /// Configuration for seeding YogaClasses in Database
+    /// </summary>
     internal class YogaClassConfiguration : IEntityTypeConfiguration<YogaClass>
     {
         public void Configure(EntityTypeBuilder<YogaClass> builder)
@@ -31,8 +35,8 @@ namespace YogaCenter.Infrastructure.Data.Configuration
                 {
                     Id = 2,
                     Name = "Dinamic Viniasa with Krisi",
-                    StartTime = new DateTime(2022,11,11,20,0,0),
-                    EndTime = new DateTime(2022,11,11,21,30,0),
+                    StartTime = new DateTime(2022,12,28,20,0,0),
+                    EndTime = new DateTime(2022,12,28,21,30,0),
                     Price = 20,
                     CategoryId = 4,
                     TeacherId = 1,

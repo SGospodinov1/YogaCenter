@@ -2,6 +2,9 @@
 
 namespace YogaCenter.Core.Contracts
 {
+    /// <summary>
+    /// Interface for AdminService
+    /// </summary>
     public interface IAdminService
     {
         Task<IEnumerable<UserViewModel>> AllUsers();

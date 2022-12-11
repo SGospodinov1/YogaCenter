@@ -4,6 +4,10 @@ using YogaCenter.Infrastructure.Data.DataModels;
 
 namespace YogaCenter.Core.Contracts
 {
+
+    /// <summary>
+    /// Interface for YogaClassService
+    /// </summary>
     public interface IYogaClassService
     {
         Task<IEnumerable<YogaClassViewModel>> GetAll();

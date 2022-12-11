@@ -84,7 +84,16 @@ namespace YogaCenter.Tests.UnitTests
                 Email = "teacher2@mail.com",
                 FirstName = "Olga",
                 LastName = "Hristova"
-            }
+                },
+
+
+                new AppUser()
+                {
+                Id = "Teacher3Id",
+                Email = "teacher3@mail.com",
+                FirstName = "Paloma",
+                LastName = "Tosheva"
+                }
 
             };
 
@@ -111,6 +120,14 @@ namespace YogaCenter.Tests.UnitTests
                     Id = 3,
                     Description = "I`m your best best teacher.",
                     AppUserId = "Teacher2Id"
+                },
+
+                new Teacher()
+                {
+                    Id = 4,
+                    Description = "Deleted teacher",
+                    AppUserId = "Teacher3Id",
+                    IsDeleted = true
                 }
 
             };
@@ -142,6 +159,18 @@ namespace YogaCenter.Tests.UnitTests
                     EndTime = new DateTime(2022, 12, 20, 10, 30, 0),
                     CategoryId = 2,
                     TeacherId = 2,
+                    Price = 20M,
+                    AppUsersYogaClasses = new List<AppUserYogaClass>()
+                },
+
+                new YogaClass()
+                {
+                    Id = 3,
+                    Name = "Deleted",
+                    StartTime = new DateTime(2022, 12, 25, 9, 00, 0),
+                    EndTime = new DateTime(2022, 12, 25, 10, 30, 0),
+                    CategoryId = 1,
+                    TeacherId = 4,
                     Price = 20M,
                     AppUsersYogaClasses = new List<AppUserYogaClass>()
                 }

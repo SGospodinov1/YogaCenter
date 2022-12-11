@@ -12,8 +12,14 @@ using YogaCenter.Infrastructure.Data.DataModels;
 
 namespace YogaCenter.Core.Services
 {
+    /// <summary>
+    /// PostService keep all methods that are connected to Posts
+    /// </summary>
     public class PostService : IPostService
     {
+        /// <summary>
+        /// Use repository to connect to Database
+        /// </summary>
         private readonly IRepository repo;
 
         public PostService(IRepository _repo)
@@ -22,6 +28,10 @@ namespace YogaCenter.Core.Services
 
         }
 
+        /// <summary>
+        /// This method return short information about all Posts
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<PostViewModel>> AllPosts()
         {
             var posts = await repo.AllReadonly<Post>()
@@ -39,6 +49,11 @@ namespace YogaCenter.Core.Services
 
         }
 
+        /// <summary>
+        /// This method is used to show the Teacher all Posts created by him/her
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<PostViewModel>> MyPosts(string userId)
         {
             var posts = await repo.AllReadonly<Post>()
@@ -57,6 +72,11 @@ namespace YogaCenter.Core.Services
 
         }
 
+        /// <summary>
+        /// This method is used to  find the specific Post and show detailed information about it.
+        /// </summary>
+        /// <param name="postId"></param>
+        /// <returns></returns>
         public async Task<PostDetailsViewModel> FindPost(int postId)
         {
             var post = await repo.All<Post>()
@@ -75,6 +95,11 @@ namespace YogaCenter.Core.Services
             return result;
         }
 
+        /// <summary>
+        /// This method is used to create new Post and add it to the database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task CreatePost(CreateNewPostViewModel model)
         {
             var post = new Post()
@@ -90,6 +115,11 @@ namespace YogaCenter.Core.Services
             await repo.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// This method is used to find the Post in database and add its information in the Edit View
+        /// </summary>
+        /// <param name="postId"></param>
+        /// <returns></returns>
         public async Task<CreateNewPostViewModel> GetPostForEdit(int postId)
         {
             var post = await repo.GetByIdAsync<Post>(postId);
@@ -107,6 +137,11 @@ namespace YogaCenter.Core.Services
 
         }
 
+        /// <summary>
+        /// This method is used to add Edited Post to database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task EditPost(CreateNewPostViewModel model)
         {
 
@@ -120,6 +155,11 @@ namespace YogaCenter.Core.Services
 
         }
 
+        /// <summary>
+        /// This method is used to delete Post
+        /// </summary>
+        /// <param name="postId"></param>
+        /// <returns></returns>
         public async Task DeletePost(int postId)
         {
             await repo.DeleteAsync<Post>(postId);

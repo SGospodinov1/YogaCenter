@@ -8,8 +8,14 @@ using YogaCenter.Infrastructure.Data.DataModels;
 
 namespace YogaCenter.Core.Services
 {
+    /// <summary>
+    /// TeacherService keep all methods that are connected to Teachers
+    /// </summary>
     public class TeacherService : ITeacherService
     {
+        /// <summary>
+        /// Use repository to connect to Database
+        /// </summary>
         private readonly IRepository repo;
 
         public TeacherService(IRepository _repo)
@@ -18,6 +24,11 @@ namespace YogaCenter.Core.Services
 
         }
 
+        /// <summary>
+        /// This method is used to add new Teacher in database
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task AddNewTeacher(NewTeacherViewModel model)
         {
 
@@ -31,10 +42,12 @@ namespace YogaCenter.Core.Services
             await repo.SaveChangesAsync();
         }
 
-
-    
-
-    public async Task<bool> IsTeacher(string userId)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public async Task<bool> IsTeacher(string userId)
         {
             bool result = true;
 

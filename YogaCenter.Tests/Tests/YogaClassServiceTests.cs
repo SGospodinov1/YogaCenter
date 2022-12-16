@@ -33,18 +33,6 @@ namespace YogaCenter.Tests.UnitTests
 
 
         [Test]
-        public void GetUser_ShouldReturnCorrectInfo()
-        {
-            var result = yogaClassService.GetUser("Teacher1Id");
-
-            Assert.AreEqual("teacher1@mail.com", result.Result.Email);
-            Assert.AreEqual("Petq", result.Result.FirstName);
-            Assert.AreEqual("Petrova", result.Result.LastName);
-
-        }
-
-
-        [Test]
         public void GetMyClasses_ShouldReturnCorrectCount()
         {
             var classes = yogaClassService.GetMyClasses("UserId");

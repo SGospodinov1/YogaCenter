@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using YogaCenter.Core.Contracts;
 using YogaCenter.Core.Models;
 using YogaCenter.Extensions;
@@ -7,6 +8,7 @@ namespace YogaCenter.Administration.Controllers
 {
     [Area("Administration")]
     [Route("Administration/[controller]/[action]")]
+    [Authorize]
     public class CommentController : Controller
     {
         private readonly ICommentService service;

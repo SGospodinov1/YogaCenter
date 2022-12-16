@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using YogaCenter.Core.Contracts;
 using YogaCenter.Core.Models;
 using YogaCenter.Extensions;
 
 namespace YogaCenter.Controllers
 {
+    [Authorize]
     public class CommentController : Controller
     {
         private readonly ICommentService service;
@@ -14,6 +16,7 @@ namespace YogaCenter.Controllers
             service = _service;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> AllComments(int classId)
         {
 

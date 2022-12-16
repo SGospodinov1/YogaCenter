@@ -7,6 +7,10 @@
 
 <head>
     <style>
+        body {
+            background-image: url(https://img.freepik.com/free-vector/mandala-patterns-blue-background_1308-69901.jpg?w=2000);
+            color: black;
+        }
         #titleDiv {
             position:center;
             width:1250px;
@@ -24,15 +28,15 @@
 </head>
 <body>
 <div class="text-center row" id="titleDiv">
-    <h2 class="text-center">@ViewBag.Title</h2>
+    <h1 class="text-center">@ViewBag.Title</h1>
 
     <div class="text-center row" id="textDiv">
         @foreach (var post in Model)
         {
-            <div class="card col-4" style="width: 20rem;">
+            <div class="content" style="width: 20rem;">
                 <div class="card-body">
 
-                    <h5 class="card-title mt-1">@post.Title</h5>
+                    <h4 class="card-title mt-1">@post.Title</h4>
                     <p class="mb-0">Summary: @post.Summary</p>
                     <p class="mb-0">Created by: @post.CreatedBy</p>
                 </div>

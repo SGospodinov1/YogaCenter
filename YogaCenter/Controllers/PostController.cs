@@ -4,7 +4,7 @@ using YogaCenter.Core.Contracts;
 
 namespace YogaCenter.Controllers
 {
-    
+    [Authorize]
     public class PostController : Controller
     {
         private readonly IPostService service;
@@ -14,6 +14,7 @@ namespace YogaCenter.Controllers
             service = _service;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> AllPosts()
         {

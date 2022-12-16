@@ -103,6 +103,7 @@ namespace YogaCenter.Areas.Administration.Controllers
 
             if (!ModelState.IsValid)
             {
+                model.Categories = await service.GetAllCategoriesAsync();
                 return View(model);
             }
 

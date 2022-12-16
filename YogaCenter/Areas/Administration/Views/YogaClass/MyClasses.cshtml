@@ -37,7 +37,7 @@
                 
                 <form asp-area="Administration" asp-controller="YogaClass" asp-action="CreateYogaClass" method="get" asp-route-userId="@TempData.Peek("userId")">
                     <input type="hidden" value="@TempData.Peek("userId")" name="userId" />
-                    <button type="submit" class="fs-6 btn btn-success mb-3 p-2">Create new class</button>
+                    <button type="submit" class="btn btn-outline-success">Create new class</button>
                 </form>
                 
             </td>
@@ -76,7 +76,7 @@
                             <td>
                                 <form asp-area="Administration" asp-controller="Comment" asp-action="AllComments" method="get" asp-route-classId="@item.Id">
                                     <input type="hidden" value="@item.Id" name="classId" />
-                                    <button type="submit" class="fs-6 btn btn-success mb-3 p-2">Comments</button>
+                                    <button type="submit" class="btn btn-outline-info">Comments</button>
                                 </form>
                             </td>
                             
@@ -85,14 +85,14 @@
                                 <td>
                                     <form asp-area="Administration" asp-controller="YogaClass" asp-action="EditYogaClass" method="get" asp-route-classId="@item.Id">
                                         <input type="hidden" value="@item.Id" name="classId" />
-                                        <button type="submit" class="fs-6 btn btn-success mb-3 p-2">Edit</button>
+                                        <button type="submit" class="btn btn-outline-warning">Edit</button>
                                     </form>
                                 </td>
 
                                 <td>
                                     <form asp-area="Administration" asp-controller="YogaClass" asp-action="DeleteYogaClass" method="post" asp-route-classId="@item.Id">
                                         <input type="hidden" value="@item.Id" name="classId" />
-                                        <button type="submit" class="fs-6 btn btn-success mb-3 p-2">Delete</button>
+                                        <button type="submit" class="btn btn-outline-danger">Delete</button>
                                     </form>
                                 </td>
                             }

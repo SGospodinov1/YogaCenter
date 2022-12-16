@@ -12,7 +12,6 @@ namespace YogaCenter.Core.Contracts
     {
         Task<IEnumerable<YogaClassViewModel>> GetAll();
 
-        Task<AppUser> GetUser(string id);
 
         Task<IEnumerable<YogaClassViewModel>> GetMyClasses(string userId);
 

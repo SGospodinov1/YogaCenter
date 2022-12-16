@@ -25,7 +25,7 @@ namespace YogaCenter.Infrastructure.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, bool seed = true)
             : base(options)
         {
-            
+
             if (this.Database.IsRelational())
             {
                 this.Database.Migrate();
@@ -93,14 +93,14 @@ namespace YogaCenter.Infrastructure.Data
                 .WithMany(c => c.Comments)
                 .HasForeignKey(u => u.YogaClassId)
                 .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Comment>()
                 .HasOne(u => u.AppUser)
                 .WithMany(c => c.Comments)
                 .HasForeignKey(u => u.AppUserId)
                 .IsRequired()
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
 
             if (this.seedDb)
@@ -113,8 +113,8 @@ namespace YogaCenter.Infrastructure.Data
                 builder.ApplyConfiguration(new YogaClassConfiguration());
                 builder.ApplyConfiguration(new PostConfiguration());
                 builder.ApplyConfiguration(new CommentConfiguration());
-            }
 
+            }
 
 
 

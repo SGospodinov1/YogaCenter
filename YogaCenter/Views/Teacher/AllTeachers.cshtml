@@ -7,6 +7,10 @@
 
 <head>
     <style>
+        body {
+            background-image: url(https://img.freepik.com/free-vector/mandala-patterns-blue-background_1308-69901.jpg?w=2000);
+            color: black;
+        }
         #titleDiv {
             position:center;
             width:1250px;
@@ -29,7 +33,7 @@
     <div class="text-center row" id="textDiv">
         @foreach (var teacher in Model)
         {
-            <div class="card col-4" style="width: 20rem;">
+            <div class="content" style="width: 20rem;">
                 <div class="card-body">
 
                     <h5 class="card-title mt-1">@teacher.FullName</h5>

@@ -8,6 +8,7 @@ namespace YogaCenter.Areas.Administration.Controllers
 {
     [Area("Administration")]
     [Route("Administration/[controller]/[action]")]
+    [Authorize]
     public class PostController : Controller
     {
         

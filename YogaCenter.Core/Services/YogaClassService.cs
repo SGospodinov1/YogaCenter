@@ -71,19 +71,6 @@ namespace YogaCenter.Core.Services
             return classes;
         }
 
-        /// <summary>
-        /// This method give information about User by its Id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public async Task<AppUser> GetUser(string id)
-        {
-            var user = await repo.All<AppUser>()
-                .Include(uy => uy.AppUsersYogaClasses)
-                .FirstOrDefaultAsync(u => u.Id == id);
-
-            return user;
-        }
 
         /// <summary>
         /// This method gives information about User classes that he/she joined

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using YogaCenter.Core.Contracts;
 using YogaCenter.Core.Models.Admin;
 
@@ -6,6 +7,7 @@ namespace YogaCenter.Areas.Administration.Controllers
 {
     [Area("Administration")]
     [Route("Administration/[controller]/[action]")]
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly IAdminService service;

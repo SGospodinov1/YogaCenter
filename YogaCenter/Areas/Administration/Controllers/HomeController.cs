@@ -10,6 +10,7 @@ namespace YogaCenter.Administration.Controllers
 {
     [Area("Administration")]
     [Route("Administration/[controller]/[action]")]
+    [Authorize]
     public class HomeController : Controller
     {
         

@@ -61,7 +61,7 @@
 
                 <table style="width: 100%" class="table table-hover">
                     <thead>
-                    <tr>
+                    <tr style="color: black">
                         <td>Description</td>
                         <td>Name</td>
                         
@@ -71,7 +71,7 @@
                     <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
+                        <tr style="color: black">
                             <td>@item.Description</td>
                             <td>@item.FullName</td>
 
@@ -80,7 +80,7 @@
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <tr>
+                        <tr style="color: black">
                             <form asp-area="" asp-controller="Comment" asp-action="AddComment" method="get" asp-route-classId="@TempData.Peek("classId")">
                                 <input type="hidden" value="@TempData.Peek("classId")" name="classId" />
                                 <button type="submit" class="btn btn-outline-success">Add Comment</button>
